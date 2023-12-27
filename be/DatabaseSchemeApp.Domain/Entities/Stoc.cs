@@ -1,4 +1,4 @@
-﻿namespace DatabaseSchemeApp.Domain
+﻿namespace DatabaseSchemeApp.Domain.Entities
 {
     public class Stoc
     {

@@ -3,21 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemeApp.DataAccess", "DatabaseSchemeApp.DataAccess\DatabaseSchemeApp.DataAccess.csproj", "{1855E00E-E54C-4AEF-96FE-FEF377455FB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseSchemeApp.DataAccess", "DatabaseSchemeApp.DataAccess\DatabaseSchemeApp.DataAccess.csproj", "{1855E00E-E54C-4AEF-96FE-FEF377455FB9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{062E35EE-6850-4E89-8B31-F60B42B6886A} = {062E35EE-6850-4E89-8B31-F60B42B6886A}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemeApp.Application", "DatabaseSchemeApp.Application\DatabaseSchemeApp.Application.csproj", "{BC7BE651-7368-4779-8422-2F341E02E55E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseSchemeApp.Application", "DatabaseSchemeApp.Application\DatabaseSchemeApp.Application.csproj", "{BC7BE651-7368-4779-8422-2F341E02E55E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{062E35EE-6850-4E89-8B31-F60B42B6886A} = {062E35EE-6850-4E89-8B31-F60B42B6886A}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemeApp.Domain", "DatabaseSchemeApp.Domain\DatabaseSchemeApp.Domain.csproj", "{062E35EE-6850-4E89-8B31-F60B42B6886A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseSchemeApp.Domain", "DatabaseSchemeApp.Domain\DatabaseSchemeApp.Domain.csproj", "{062E35EE-6850-4E89-8B31-F60B42B6886A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemeApp", "DatabaseSchemeApp\DatabaseSchemeApp.csproj", "{3902F1AF-6DD1-46E7-BC77-87F3BEFB59EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseSchemeApp", "DatabaseSchemeApp\DatabaseSchemeApp.csproj", "{3902F1AF-6DD1-46E7-BC77-87F3BEFB59EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{062E35EE-6850-4E89-8B31-F60B42B6886A} = {062E35EE-6850-4E89-8B31-F60B42B6886A}
+		{52C8B5E8-59E1-4FAB-A5C0-188D431B465B} = {52C8B5E8-59E1-4FAB-A5C0-188D431B465B}
+		{BC7BE651-7368-4779-8422-2F341E02E55E} = {BC7BE651-7368-4779-8422-2F341E02E55E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSchemeApp.Controllers", "DatabaseSchemeApp.Controllers\DatabaseSchemeApp.Controllers.csproj", "{52C8B5E8-59E1-4FAB-A5C0-188D431B465B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{062E35EE-6850-4E89-8B31-F60B42B6886A} = {062E35EE-6850-4E89-8B31-F60B42B6886A}
+		{BC7BE651-7368-4779-8422-2F341E02E55E} = {BC7BE651-7368-4779-8422-2F341E02E55E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1855E00E-E54C-4AEF-96FE-FEF377455FB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +50,12 @@ Global
 		{3902F1AF-6DD1-46E7-BC77-87F3BEFB59EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3902F1AF-6DD1-46E7-BC77-87F3BEFB59EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3902F1AF-6DD1-46E7-BC77-87F3BEFB59EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52C8B5E8-59E1-4FAB-A5C0-188D431B465B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C8B5E8-59E1-4FAB-A5C0-188D431B465B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C8B5E8-59E1-4FAB-A5C0-188D431B465B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52C8B5E8-59E1-4FAB-A5C0-188D431B465B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
