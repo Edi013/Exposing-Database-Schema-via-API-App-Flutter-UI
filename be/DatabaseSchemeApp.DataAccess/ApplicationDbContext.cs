@@ -1,14 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DatabaseSchemeApp.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using RemindMe.Domain.Entities;
-using System.Reflection.Emit;
 
-namespace RemindMe.DataAcces
+namespace DatabaseSchemeApp.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
         private IConfiguration Configuration;
-        public DbSet<ToDo> ToDos { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         public ApplicationDbContext(IConfiguration _configuration)
         {
@@ -19,19 +18,19 @@ namespace RemindMe.DataAcces
         {
             base.OnConfiguring(options);
 
-            options.UseNpgsql(Configuration.GetConnectionString("RemindMeDb"));
+            options.UseOracle(Configuration.GetConnectionString("DatabaseSchemeApp"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ConfigureToDo(modelBuilder);
+            ConfigureClient(modelBuilder);
 
             base.OnModelCreating(modelBuilder);
         }
 
-        private void ConfigureToDo(ModelBuilder modelBuilder)
+        private void ConfigureClient(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ToDo>().HasKey(x => x.Id);
+            modelBuilder.Entity<Client>().HasKey(x => x.Id);
         }
     }
 }

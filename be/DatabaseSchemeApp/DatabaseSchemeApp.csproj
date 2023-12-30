@@ -12,4 +12,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseSchemeApp.Application\DatabaseSchemeApp.Application.csproj" />
+    <ProjectReference Include="..\DatabaseSchemeApp.Controllers\DatabaseSchemeApp.Controllers.csproj" />
+    <ProjectReference Include="..\DatabaseSchemeApp.Domain\DatabaseSchemeApp.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

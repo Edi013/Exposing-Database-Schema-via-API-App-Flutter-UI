@@ -15,12 +15,12 @@
             builder.RegisterSwaggerSettings();
 
             builder.Services.AddMediatR(
-                 cfg => cfg.RegisterServicesFromAssemblies(typeof(GetAllToDoHandler).Assembly));
+                 cfg => cfg.RegisterServicesFromAssemblies(typeof(GetAllClientHandler).Assembly));
 
             var connectionString = builder.Configuration.GetConnectionString("RemindMeDb");
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
-            builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
+            builder.Services.AddScoped<IClientRepository, ClientRepository>();
 
             builder.RegisterAppSettings();
         }
