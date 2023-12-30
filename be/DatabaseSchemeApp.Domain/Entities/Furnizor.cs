@@ -1,8 +1,7 @@
 ﻿namespace DatabaseSchemeApp.Domain.Entities
 {
-    public class Furnizor
+    public class Furnizor : BaseEntity
     {
-        public int IdFurnizor { get; set; }
         public string NumeFurnizor { get; set; }
         public int TimpExecutie { get; set; }
     }

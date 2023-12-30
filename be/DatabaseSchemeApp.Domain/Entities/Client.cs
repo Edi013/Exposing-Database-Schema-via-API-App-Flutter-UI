@@ -1,8 +1,7 @@
 ﻿namespace DatabaseSchemeApp.Domain.Entities
 {
-    public class Client
+    public class Client : BaseEntity
     {
-        public int IdClient { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public string Companie { get; set; }
