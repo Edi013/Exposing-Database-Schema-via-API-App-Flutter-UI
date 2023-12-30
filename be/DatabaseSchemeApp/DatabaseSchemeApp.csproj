@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DatabaseSchemeApp.Application\DatabaseSchemeApp.Application.csproj" />
     <ProjectReference Include="..\DatabaseSchemeApp.Controllers\DatabaseSchemeApp.Controllers.csproj" />
+    <ProjectReference Include="..\DatabaseSchemeApp.DataAccess\DatabaseSchemeApp.DataAccess.csproj" />
     <ProjectReference Include="..\DatabaseSchemeApp.Domain\DatabaseSchemeApp.Domain.csproj" />
   </ItemGroup>
 

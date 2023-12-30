@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Oracle.EntityFrameworkCore" Version="6.21.120" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DatabaseSchemeApp.Domain\DatabaseSchemeApp.Domain.csproj" />
   </ItemGroup>
 

@@ -18,6 +18,7 @@ namespace DatabaseSchemeApp.DataAccess
         {
             base.OnConfiguring(options);
 
+            //useless?
             options.UseOracle(Configuration.GetConnectionString("DatabaseSchemeApp"));
         }
 

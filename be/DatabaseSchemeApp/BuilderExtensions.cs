@@ -1,12 +1,16 @@
-﻿namespace DatabaseSchemeApp
+﻿using DatabaseSchemeApp.Application.Requests.ClientRequests;
+using DatabaseSchemeApp.DataAccess;
+using DatabaseSchemeApp.DataAccess.Repositories;
+using DatabaseSchemeApp.Domain.Entities;
+using DatabaseSchemeApp.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace DatabaseSchemeApp
 {
     public static class BuilderExtensions
     {
         public static void RegisterServices(this WebApplicationBuilder builder)
         {
-            builder.ConfigureLogging();
-
-
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
 
@@ -15,20 +19,16 @@
             builder.RegisterSwaggerSettings();
 
             builder.Services.AddMediatR(
-                 cfg => cfg.RegisterServicesFromAssemblies(typeof(GetAllClientHandler).Assembly));
+                 cfg => cfg.RegisterServicesFromAssemblies(typeof(GetAllClientRequest).Assembly));
 
-            var connectionString = builder.Configuration.GetConnectionString("RemindMeDb");
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+            var connectionString = builder.Configuration.GetConnectionString("DatabaseSchemeApp");
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(connectionString));
 
-            builder.Services.AddScoped<IClientRepository, ClientRepository>();
+            builder.Services.AddScoped<IRepository<Client>, ClientRepository>();
 
             builder.RegisterAppSettings();
         }
-        public static void ConfigureLogging(this WebApplicationBuilder builder)
-        {
-            builder.Logging.ClearProviders();
-            builder.Logging.AddLog4Net(log4NetConfigFile: "log4net.config");
-        }
+        
         private static void ConfigureCors(this WebApplicationBuilder builder)
         {
             var frontendAppUrl = builder.Configuration.GetSection("FrontendApp:Url");
@@ -38,7 +38,8 @@
                 options.AddPolicy(name: "CorsPolicy",
                                           policy =>
                                           {
-                                              policy.WithOrigins(frontendAppUrl.Value)
+                                              policy //.AllowAnyOrigin()
+                                              .WithOrigins(frontendAppUrl.Value)
                                               .AllowAnyHeader()
                                               .AllowAnyMethod()
                                               .AllowCredentials();
