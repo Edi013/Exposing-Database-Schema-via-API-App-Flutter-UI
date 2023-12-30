@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RemindMe.Domain.Interfaces;
+﻿using DatabaseSchemeApp.Domain.Entities;
+using DatabaseSchemeApp.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace RemindMe.DataAcces.Repositories
+namespace DatabaseSchemeApp.DataAccess.Repositories
 {
-    public class RepositoryBase<T> : IRepository<T> where T : class
+    public class RepositoryBase<T> : IRepository<T> where T : BaseEntity
     {
         protected ApplicationDbContext context;
 
@@ -46,6 +47,13 @@ namespace RemindMe.DataAcces.Repositories
         public async Task DeleteById(int id)
         {
             await Delete(await GetById(id));
+        }
+
+        public async Task<T> SingleOrDefaultAsync(int id)
+        {
+            return await context.Set<T>()
+                .AsNoTracking()
+                .SingleAsync(x => x.Id == id);
         }
 
         public async Task<IEnumerable<T>> FindByCondition(Expression<Func<T, bool>> expression)
