@@ -11,4 +11,9 @@
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.20" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DatabaseSchemeApp.Application\DatabaseSchemeApp.Application.csproj" />
+	  <ProjectReference Include="..\DatabaseSchemeApp.Domain\DatabaseSchemeApp.Domain.csproj" />
+	</ItemGroup>
 </Project>

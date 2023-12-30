@@ -20,33 +20,33 @@ namespace DatabaseSchemeApp.Controllers
         [HttpGet("GetAll")]
         public async Task<IEnumerable<Client>> GetAll()
         {
-            var req = new GetAllToDoRequest();
+            var req = new GetAllClientRequest();
 
-            logger.LogInformation("GetAll [GET] request for ToDos.");
+            logger.LogInformation("GetAll [GET] request for Clients.");
             var result = await mediator.Send(req, CancellationToken.None);
             return result;
         }
 
         [HttpPost("Create")]
-        public async Task<ToDo> CreateToDo(CreateToDoRequest req)
+        public async Task<Client> CreateClient(CreateClientRequest req)
         {
-            logger.LogInformation("Create [POST] request for a ToDo.");
+            logger.LogInformation("Create [POST] request for a Client.");
 
             return await mediator.Send(req, CancellationToken.None);
         }
 
         [HttpDelete("Delete")]
-        public async Task<BaseResult> DeleteToDo(DeleteToDoRequest req)
+        public async Task<BaseResult> DeleteClient(DeleteClientRequest req)
         {
-            logger.LogInformation($"Delete [DELETE] request for ToDo with id {req.Id}.");
+            logger.LogInformation($"Delete [DELETE] request for Client with id {req.Id}.");
 
             return await mediator.Send(req, CancellationToken.None);
         }
 
         [HttpPut("Update")]
-        public async Task<ToDo> UpdateToDo(UpdateToDoRequest req)
+        public async Task<Client> UpdateClient(UpdateClientRequest req)
         {
-            logger.LogInformation($"Update [PUT] request for ToDo with id {req.Id}.");
+            logger.LogInformation($"Update [PUT] request for Client with id {req.Id}.");
 
             return await mediator.Send(req, CancellationToken.None);
         }
