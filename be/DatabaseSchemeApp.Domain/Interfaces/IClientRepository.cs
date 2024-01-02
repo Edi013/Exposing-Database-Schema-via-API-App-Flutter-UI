@@ -1,6 +1,8 @@
-﻿namespace DatabaseSchemeApp.Domain.Interfaces
+﻿using DatabaseSchemeApp.Domain.Entities;
+
+namespace DatabaseSchemeApp.Domain.Interfaces
 {
-    public interface IClientRepository<T> : IRepository<T> where T : class
+    public interface IClientRepository : IRepository<Client>
     {
     }
 }

@@ -13,9 +13,10 @@ namespace DatabaseSchemeApp.Application.Handlers.ClientHandlers
         {
             this.repository = repository;
         }
-        Task<IEnumerable<Client>> IRequestHandler<GetAllClientRequest, IEnumerable<Client>>.Handle(GetAllClientRequest request, CancellationToken cancellationToken)
+        async Task<IEnumerable<Client>> IRequestHandler<GetAllClientRequest, IEnumerable<Client>>.Handle(GetAllClientRequest request, CancellationToken cancellationToken)
         {
-            return repository.GetAll();
+            var result = await repository.GetAll();
+            return result;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace DatabaseSchemeApp.DataAccess
     public class ApplicationDbContext : DbContext
     {
         private IConfiguration Configuration;
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<Client> Client { get; set; }
 
         public ApplicationDbContext(IConfiguration _configuration)
         {
@@ -18,20 +18,23 @@ namespace DatabaseSchemeApp.DataAccess
         {
             base.OnConfiguring(options);
 
-            //useless?
             options.UseOracle(Configuration.GetConnectionString("DatabaseSchemeApp"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ConfigureClient(modelBuilder);
+            ConfigureTableNames(modelBuilder);
 
             base.OnModelCreating(modelBuilder);
         }
 
-        private void ConfigureClient(ModelBuilder modelBuilder)
+        private void ConfigureTableNames(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Client>().HasKey(x => x.Id);
+            modelBuilder.Entity<Client>().ToTable("Client");
+            modelBuilder.Entity<Comanda>().ToTable("Comanda");
+            modelBuilder.Entity<Articol>().ToTable("Articol");
+            modelBuilder.Entity<Stoc>().ToTable("Stoc");
+            modelBuilder.Entity<Furnizor>().ToTable("Furnizor");
         }
     }
 }
