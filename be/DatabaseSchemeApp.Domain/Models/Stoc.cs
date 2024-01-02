@@ -4,7 +4,6 @@
     {
         public Stoc()
         {
-            Articole = new HashSet<Articol>();
         }
 
         public int? IdFurnizori { get; set; }
@@ -14,6 +13,5 @@
         public string? DescriereUnitate { get; set; }
 
         public virtual Furnizor? IdFurnizoriNavigation { get; set; }
-        public virtual ICollection<Articol> Articole { get; set; }
     }
 }

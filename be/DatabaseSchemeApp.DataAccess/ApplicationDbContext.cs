@@ -56,7 +56,7 @@ namespace DatabaseSchemeApp.DataAccess
                     .HasColumnType("NUMBER")
                     .HasColumnName("PRET_TOTAL");
 
-                entity.HasOne(d => d.IdComandaNavigation)
+               /* entity.HasOne(d => d.IdComandaNavigation)
                     .WithMany(p => p.Articole)
                     .HasForeignKey(d => d.IdComanda)
                     .HasConstraintName("SYS_C007698");
@@ -64,7 +64,7 @@ namespace DatabaseSchemeApp.DataAccess
                 entity.HasOne(d => d.IdStocNavigation)
                     .WithMany(p => p.Articole)
                     .HasForeignKey(d => d.IdStoc)
-                    .HasConstraintName("SYS_C007699");
+                    .HasConstraintName("SYS_C007699");*/
             });
 
             modelBuilder.Entity<Client>(entity =>
@@ -137,10 +137,10 @@ namespace DatabaseSchemeApp.DataAccess
                     .HasColumnType("NUMBER")
                     .HasColumnName("ID_CLIENTI");
 
-                entity.HasOne(d => d.IdClientiNavigation)
+                /*entity.HasOne(d => d.IdClientiNavigation)
                     .WithMany(p => p.Comenzi)
                     .HasForeignKey(d => d.IdClienti)
-                    .HasConstraintName("SYS_C007696");
+                    .HasConstraintName("SYS_C007696");*/
             });
 
             modelBuilder.Entity<Furnizor>(entity =>
@@ -194,10 +194,10 @@ namespace DatabaseSchemeApp.DataAccess
                     .IsUnicode(false)
                     .HasColumnName("UNITATE");
 
-                entity.HasOne(d => d.IdFurnizoriNavigation)
+                /*entity.HasOne(d => d.IdFurnizoriNavigation)
                     .WithMany(p => p.Stocuri)
                     .HasForeignKey(d => d.IdFurnizori)
-                    .HasConstraintName("SYS_C007693");
+                    .HasConstraintName("SYS_C007693");*/
             });
 
             modelBuilder.HasSequence("SEQ_ARTICOLE");
