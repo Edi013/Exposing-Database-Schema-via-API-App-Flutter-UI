@@ -22,7 +22,9 @@ namespace DatabaseSchemeApp
                  cfg => cfg.RegisterServicesFromAssemblies(typeof(GetAllClientRequest).Assembly));
 
             var connectionString = builder.Configuration.GetConnectionString("DatabaseSchemeApp");
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(connectionString));
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(connectionString, p => {
+                p.UseOracleSQLCompatibility("11");
+            }));
 
             builder.Services.AddScoped<IRepository<Client>, ClientRepository>();
 

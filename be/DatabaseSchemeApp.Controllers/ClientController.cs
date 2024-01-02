@@ -26,19 +26,22 @@ namespace DatabaseSchemeApp.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<Client> CreateClient(CreateClientRequest req)
+        public async Task<Client> Create(CreateClientRequest req)
         {
             return await mediator.Send(req, CancellationToken.None);
         }
 
-        [HttpDelete("Delete")]
-        public async Task<bool> DeleteClient(DeleteClientRequest req)
+        [HttpDelete("Delete/{id}")]
+        public async Task<bool> Delete(decimal id)
         {
+            var req = new DeleteClientRequest()
+            { Id = id };
+
             return await mediator.Send(req, CancellationToken.None);
         }
 
         [HttpPut("Update")]
-        public async Task<Client> UpdateClient(UpdateClientRequest req)
+        public async Task<Client> Update(UpdateClientRequest req)
         {
             return await mediator.Send(req, CancellationToken.None);
         }

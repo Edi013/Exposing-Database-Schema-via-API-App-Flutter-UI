@@ -15,18 +15,10 @@ namespace DatabaseSchemeApp.DataAccess
             configuration = _configuration;
         }
 
-        public virtual DbSet<Articol> Articole { get; set; } = null!;
-        public virtual DbSet<Client> Clienti { get; set; } = null!;
-        public virtual DbSet<Comanda> Comenzi { get; set; } = null!;
-        public virtual DbSet<Furnizor> Furnizori { get; set; } = null!;
-        public virtual DbSet<Stoc> Stoc { get; set; } = null!;
-
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)
-            {
                 options.UseOracle(configuration.GetConnectionString("DatabaseSchemeApp"));
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -55,16 +47,6 @@ namespace DatabaseSchemeApp.DataAccess
                 entity.Property(e => e.PretTotal)
                     .HasColumnType("NUMBER")
                     .HasColumnName("PRET_TOTAL");
-
-               /* entity.HasOne(d => d.IdComandaNavigation)
-                    .WithMany(p => p.Articole)
-                    .HasForeignKey(d => d.IdComanda)
-                    .HasConstraintName("SYS_C007698");
-
-                entity.HasOne(d => d.IdStocNavigation)
-                    .WithMany(p => p.Articole)
-                    .HasForeignKey(d => d.IdStoc)
-                    .HasConstraintName("SYS_C007699");*/
             });
 
             modelBuilder.Entity<Client>(entity =>
@@ -136,11 +118,6 @@ namespace DatabaseSchemeApp.DataAccess
                 entity.Property(e => e.IdClienti)
                     .HasColumnType("NUMBER")
                     .HasColumnName("ID_CLIENTI");
-
-                /*entity.HasOne(d => d.IdClientiNavigation)
-                    .WithMany(p => p.Comenzi)
-                    .HasForeignKey(d => d.IdClienti)
-                    .HasConstraintName("SYS_C007696");*/
             });
 
             modelBuilder.Entity<Furnizor>(entity =>
@@ -165,7 +142,7 @@ namespace DatabaseSchemeApp.DataAccess
             modelBuilder.Entity<Stoc>(entity =>
             {
                 entity.ToTable("STOC");
-
+                
                 entity.Property(e => e.Id)
                     .HasColumnType("NUMBER")
                     .ValueGeneratedOnAdd()

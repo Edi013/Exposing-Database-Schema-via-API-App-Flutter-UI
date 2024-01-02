@@ -6,11 +6,11 @@ namespace DatabaseSchemeApp.Domain.Interfaces
     {
         Task<T> Add(T entity);
         Task<IEnumerable<T>> GetAll();
-        Task<T> GetById(int id);
+        Task<T> GetById(decimal id);
         Task<T> Update(T entity);
-        Task Delete(T entity);
-        Task DeleteById(int id);
-        Task<T> SingleOrDefaultAsync(int id);
+        Task<bool> Delete(T entity);
+        Task<bool> DeleteById(decimal id);
+        Task<T> SingleOrDefaultAsync(decimal id);
         Task<T> SingleByCondition(Expression<Func<T, bool>> expression);
         Task<bool> AnyByCondition(Expression<Func<T, bool>> expression);
         Task<IEnumerable<T>> FindByCondition(Expression<Func<T, bool>> expression);

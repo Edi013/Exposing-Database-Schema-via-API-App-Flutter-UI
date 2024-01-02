@@ -19,7 +19,7 @@ namespace DatabaseSchemeApp.DataAccess.Repositories
             return await context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(decimal id)
         {
             return await context.Set<T>().FindAsync(id);
         }
@@ -39,17 +39,19 @@ namespace DatabaseSchemeApp.DataAccess.Repositories
             return entity;
         }
 
-        public async Task Delete(T entity)
+        public async Task<bool> Delete(T entity)
         {
             context.Remove(entity);
             await context.SaveChangesAsync();
+            return  await AnyByCondition(x => x.Id == entity.Id);
         }
-        public async Task DeleteById(int id)
+        
+        public async Task<bool> DeleteById(decimal id)
         {
-            await Delete(await GetById(id));
+            return await Delete(await GetById(id));
         }
 
-        public async Task<T> SingleOrDefaultAsync(int id)
+        public async Task<T> SingleOrDefaultAsync(decimal id)
         {
             return await context.Set<T>()
                 .AsNoTracking()
