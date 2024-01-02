@@ -1,5 +1,4 @@
-﻿using DatabaseSchemeApp.Domain.Entities;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace DatabaseSchemeApp.Domain.Interfaces
 {

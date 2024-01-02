@@ -1,5 +1,5 @@
-﻿using DatabaseSchemeApp.Domain.Entities;
-using DatabaseSchemeApp.Domain.Interfaces;
+﻿using DatabaseSchemeApp.Domain.Interfaces;
+using DatabaseSchemeApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

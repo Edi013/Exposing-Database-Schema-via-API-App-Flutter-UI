@@ -1,6 +1,5 @@
-﻿using DatabaseSchemeApp.Domain.Entities;
-using DatabaseSchemeApp.Domain.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using DatabaseSchemeApp.Domain.Interfaces;
+using DatabaseSchemeApp.Domain.Models;
 
 namespace DatabaseSchemeApp.DataAccess.Repositories
 {

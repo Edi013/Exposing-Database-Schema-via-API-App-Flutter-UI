@@ -1,7 +1,7 @@
 ﻿using DatabaseSchemeApp.Application.Requests.ClientRequests;
 using DatabaseSchemeApp.DataAccess;
 using DatabaseSchemeApp.DataAccess.Repositories;
-using DatabaseSchemeApp.Domain.Entities;
+using DatabaseSchemeApp.Domain.Models;
 using DatabaseSchemeApp.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

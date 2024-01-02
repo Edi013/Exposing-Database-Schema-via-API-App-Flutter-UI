@@ -1,6 +1,6 @@
 ﻿using DatabaseSchemeApp.Application.Requests.ClientRequests;
-using DatabaseSchemeApp.Domain.Entities;
 using DatabaseSchemeApp.Domain.Interfaces;
+using DatabaseSchemeApp.Domain.Models;
 using MediatR;
 
 namespace DatabaseSchemeApp.Application.Handlers.ClientHandlers
@@ -13,10 +13,16 @@ namespace DatabaseSchemeApp.Application.Handlers.ClientHandlers
         {
             this.repository = repository;
         }
-        async Task<IEnumerable<Client>> IRequestHandler<GetAllClientRequest, IEnumerable<Client>>.Handle(GetAllClientRequest request, CancellationToken cancellationToken)
+
+        public async Task<IEnumerable<Client>> Handle(GetAllClientRequest request, CancellationToken cancellationToken)
         {
             var result = await repository.GetAll();
             return result;
         }
+/*        async Task<IEnumerable<Client>> IRequestHandler<GetAllClientRequest, IEnumerable<Client>>.Handle(GetAllClientRequest request, CancellationToken cancellationToken)
+        {
+            var result = await repository.GetAll();
+            return result;
+        }*/
     }
 }

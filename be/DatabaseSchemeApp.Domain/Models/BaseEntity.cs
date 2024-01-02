@@ -1,4 +1,4 @@
-﻿namespace DatabaseSchemeApp.Domain.Entities
+﻿namespace DatabaseSchemeApp.Domain.Models
 {
     public class BaseEntity
     {

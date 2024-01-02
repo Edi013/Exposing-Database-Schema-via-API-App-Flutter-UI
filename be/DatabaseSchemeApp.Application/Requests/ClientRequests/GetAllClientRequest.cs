@@ -1,5 +1,5 @@
-﻿using MediatR;
-using DatabaseSchemeApp.Domain.Entities;
+﻿using DatabaseSchemeApp.Domain.Models;
+using MediatR;
 
 namespace DatabaseSchemeApp.Application.Requests.ClientRequests
 {

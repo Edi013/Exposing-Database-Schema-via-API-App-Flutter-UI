@@ -1,4 +1,4 @@
-﻿using DatabaseSchemeApp.Domain.Entities;
+﻿using DatabaseSchemeApp.Domain.Models;
 
 namespace DatabaseSchemeApp.Domain.Interfaces
 {

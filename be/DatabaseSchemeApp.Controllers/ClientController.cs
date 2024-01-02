@@ -1,5 +1,5 @@
 ﻿using DatabaseSchemeApp.Application.Requests.ClientRequests;
-using DatabaseSchemeApp.Domain.Entities;
+using DatabaseSchemeApp.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
