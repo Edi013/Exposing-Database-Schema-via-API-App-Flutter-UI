@@ -8,24 +8,30 @@ namespace SGBD.Application.Handlers
 {
     public class ComenziHandler
     {
+        private string[] dateTimeFormats;
         IComenziRepository repository;
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration configuration;
 
         public ComenziHandler(IComenziRepository repository, IConfiguration _configuration)
         {
             this.repository = repository;
-            this._configuration = _configuration;
+            this.configuration = _configuration;
+
+            dateTimeFormats = new[] {
+                configuration.GetSection("DateTimeFormats:1").Value,
+                configuration.GetSection("DateTimeFormats:2").Value,
+                configuration.GetSection("DateTimeFormats:3").Value,
+                configuration.GetSection("DateTimeFormats:4").Value,
+                configuration.GetSection("DateTimeFormats:5").Value
+            };
         }
 
         public async Task<Comenzi> Create(ComenziDto request)
         {
-            string[] dateTimeFormats = { _configuration.GetSection("DateTimeFormats:1").Value, _configuration.GetSection("DateTimeFormats:2").Value,
-                _configuration.GetSection("DateTimeFormats:3").Value, _configuration.GetSection("DateTimeFormats:4").Value };
-
             DateTime deliveryDate, orderDate, payDate;
-            tryParseStringToDateTime(request.DataOnorare, out deliveryDate, dateTimeFormats);
-            tryParseStringToDateTime(request.DataPlasare, out orderDate, dateTimeFormats);
-            tryParseStringToDateTime(request.DataPlata, out payDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataOnorare, out deliveryDate);
+            tryParseStringToDateTime(request.DataPlasare, out orderDate);
+            tryParseStringToDateTime(request.DataPlata, out payDate);
 
             var newOrder = new Comenzi
             {
@@ -54,13 +60,12 @@ namespace SGBD.Application.Handlers
 
         public async Task<Comenzi> Update(ComenziDto request)
         {
-            string[] dateTimeFormats = { _configuration.GetSection("DateTimeFormats:1").Value, _configuration.GetSection("DateTimeFormats:2").Value,
-                _configuration.GetSection("DateTimeFormats:3").Value, _configuration.GetSection("DateTimeFormats:4").Value };
+
 
             DateTime deliveryDate, orderDate, payDate;
-            tryParseStringToDateTime(request.DataOnorare, out deliveryDate, dateTimeFormats);
-            tryParseStringToDateTime(request.DataPlasare, out orderDate, dateTimeFormats);
-            tryParseStringToDateTime(request.DataPlata, out payDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataOnorare, out deliveryDate);
+            tryParseStringToDateTime(request.DataPlasare, out orderDate);
+            tryParseStringToDateTime(request.DataPlata, out payDate);
 
             var newOrder = new Comenzi
             {
@@ -93,14 +98,15 @@ namespace SGBD.Application.Handlers
             return result;
         }
 
-        private void tryParseStringToDateTime(in string input, out DateTime output, string[] dateTimeFormat)
+        private void tryParseStringToDateTime(in string input, out DateTime output)
         {
             if(input == null) {
                 output = DateTime.MinValue;
                 return;
             }
 
-            if (!DateTime.TryParseExact(input, dateTimeFormat, null, System.Globalization.DateTimeStyles.None, out output))
+            if (!DateTime.TryParseExact(input, dateTimeFormats, null, System.Globalization.DateTimeStyles.None, out output))
+                //if (!DateTime.TryParse(input, out output))//dateTimeFormat) //, null, System.Globalization.DateTimeStyles.None, out output))
             {
                 throw new InvalidCastException();
             }

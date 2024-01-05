@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remind_me_fe/providers/client_provider.dart';
-import 'package:remind_me_fe/view/add_screen.dart';
-import 'package:remind_me_fe/view/list_screen.dart';
-import 'package:remind_me_fe/view/update_screen.dart';
+import 'package:remind_me_fe/providers/comenzi_provider.dart';
+import 'package:remind_me_fe/view/comenzi/add_screen.dart';
+import 'package:remind_me_fe/view/comenzi/list_screen.dart';
+import 'package:remind_me_fe/view/comenzi/update_screen.dart';
 
 void main() {
   try {
     runApp(
       ChangeNotifierProvider(
-        create: (context) => ClientProvider(),
+        create: (context) => ComenziProvider(),
         child: const MyApp(),
       ),
     );
@@ -25,11 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Object App',
-      initialRoute: '/list',
+      initialRoute: '/list_comenzi',
       routes: {
-        '/list': (context) => ListScreen(),
-        '/update': (context) => EditScreen(),
-        '/add': (context) => AddScreen(),
+        '/list_comenzi': (context) => ListComenziScreen(),
+        '/update_comenzi': (context) => UpdateComenziScreen(),
+        '/add_comenzi': (context) => AddComenziScreen(),
       },
     );
   }
