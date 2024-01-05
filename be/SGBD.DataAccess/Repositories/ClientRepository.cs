@@ -1,11 +1,11 @@
-﻿using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
+﻿using SGBD.Domain.Entities;
+using SGBD.Domain.Interfaces;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class ClientRepository : RepositoryBase<Client>
+    public class ClientRepository : RepositoryBase<Clienti>
     {
-        public ClientRepository(AppDbContext context)
+        public ClientRepository(ApplicationDbContext context)
             : base(context)
         { }
     }

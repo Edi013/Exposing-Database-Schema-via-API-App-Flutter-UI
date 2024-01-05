@@ -1,15 +1,15 @@
 ﻿using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using SGBD.Domain.Entities;
 
 namespace SGBD.DataAccess.Repositories
 {
     public class RepositoryBase<T> : IRepository<T> where T : BaseEntity
     {
-        protected AppDbContext context;
+        protected ApplicationDbContext context;
 
-        public RepositoryBase(AppDbContext context)
+        public RepositoryBase(ApplicationDbContext context)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
         }

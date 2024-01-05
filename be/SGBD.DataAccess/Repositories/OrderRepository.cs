@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SGBD.Domain.DTOs;
+using SGBD.Domain.Entities;
 using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    public class OrderRepository : RepositoryBase<Comenzi>, IOrderRepository
     {
-        public OrderRepository(AppDbContext context)
+        public OrderRepository(ApplicationDbContext context)
             : base(context)
         { }
 

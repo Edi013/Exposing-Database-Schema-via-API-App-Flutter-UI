@@ -1,11 +1,11 @@
-﻿using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
+﻿using SGBD.Domain.Entities;
+using SGBD.Domain.Interfaces;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class ItemRepository : RepositoryBase<Item>
+    public class ItemRepository : RepositoryBase<Articole>
     {
-        public ItemRepository(AppDbContext context)
+        public ItemRepository(ApplicationDbContext context)
             : base(context)
         { }
     }

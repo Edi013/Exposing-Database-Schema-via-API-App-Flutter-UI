@@ -1,6 +1,6 @@
 ﻿using SGBD.Domain.DTOs;
+using SGBD.Domain.Entities;
 using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
 using System.Linq;
 
 
@@ -8,22 +8,22 @@ namespace SGBD.Application.Handlers
 {
     public class StorageLocationHandler
     {
-        IRepository<StorageLocation> repository;
+        IRepository<Stoc> repository;
 
-        public StorageLocationHandler(IRepository<StorageLocation> repository)
+        public StorageLocationHandler(IRepository<Stoc> repository)
         {
             this.repository = repository;
         }
 
-        public async Task<StorageLocation> Create(StorageLocationDto request)
+        public async Task<Stoc> Create(StorageLocationDto request)
         {
-            var newStorageLocation = new StorageLocation
+            var newStorageLocation = new Stoc
             {
                 Id = request.Id,
-                LocationDescription = request.LocationDescription,
-                LocationName = request.LocationName,
-                ProviderId = request.ProviderId,
-                UnitPrice = request.UnitPrice,
+                DescriereUnitate = request.LocationDescription,
+                Unitate = request.LocationName,
+                IdFurnizori = request.ProviderId,
+                PretUnitar = request.UnitPrice,
             };
 
             var result = await repository.Add(newStorageLocation);
@@ -46,25 +46,25 @@ namespace SGBD.Application.Handlers
                 results = results.Append(new StorageLocationDto
                 {
                     Id = storageLocation.Id,
-                    LocationDescription = storageLocation.LocationDescription,
-                    LocationName = storageLocation.LocationName,
-                    ProviderId = storageLocation.ProviderId,
-                    UnitPrice = storageLocation.UnitPrice
+                    LocationDescription = storageLocation.DescriereUnitate,
+                    LocationName = storageLocation.Unitate,
+                    ProviderId = storageLocation.IdFurnizori,
+                    UnitPrice = storageLocation.PretUnitar
                 }); 
             }
             return results;
         }
 
-        public async Task<StorageLocation> Update(StorageLocationDto request)
+        public async Task<Stoc> Update(StorageLocationDto request)
         {
 
-            var newStorageLocation = new StorageLocation
+            var newStorageLocation = new Stoc
             {
                 Id = request.Id,
-                LocationDescription = request.LocationDescription,
-                LocationName = request.LocationName,
-                ProviderId = request.ProviderId,
-                UnitPrice = request.UnitPrice,
+                DescriereUnitate = request.LocationDescription,
+                Unitate = request.LocationName,
+                IdFurnizori = request.ProviderId,
+                PretUnitar = request.UnitPrice,
             };
 
             var result = await repository.Update(newStorageLocation);

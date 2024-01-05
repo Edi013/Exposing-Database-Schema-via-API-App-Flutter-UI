@@ -1,4 +1,4 @@
-﻿namespace SGBD.Domain.Models
+﻿namespace SGBD.Domain.Entities
 {
     public class BaseEntity
     {

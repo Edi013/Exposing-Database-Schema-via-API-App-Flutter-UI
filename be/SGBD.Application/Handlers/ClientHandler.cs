@@ -1,29 +1,29 @@
-﻿using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
+﻿using SGBD.Domain.Entities;
+using SGBD.Domain.Interfaces;
 
 namespace SGBD.Application.Handlers
 {
     public class ClientHandler
     {
-        IRepository<Client> repository;
+        IRepository<Clienti> repository;
 
-        public ClientHandler(IRepository<Client> repository)
+        public ClientHandler(IRepository<Clienti> repository)
         {
             this.repository = repository;
         }
 
-        public async Task<Client> Create(Client request)
+        public async Task<Clienti> Create(Clienti request)
         {
-            var newClient = new Client
+            var newClient = new Clienti
             {
                 Id = 0,
-                LastName = request.LastName,
-                FirstName = request.FirstName,
-                City = request.City,
-                PhoneNumber = request.PhoneNumber,
-                Company = request.Company,
-                PostalCode = request.PostalCode,
-                Adress = request.Adress,
+                Nume = request.Nume,
+                Prenume = request.Prenume,
+                Oras = request.Oras,
+                Telefon = request.Telefon,
+                Companie = request.Companie,
+                Cod = request.Cod,
+                Adresa = request.Adresa,
             };
 
             var result = await repository.Add(newClient);
@@ -36,25 +36,25 @@ namespace SGBD.Application.Handlers
             return result;
         }
 
-        public async Task<IEnumerable<Client>> GetAll()
+        public async Task<IEnumerable<Clienti>> GetAll()
         {
             var result = await repository.GetAll();
             return result;
         }
 
-        public async Task<Client> Update(Client request)
+        public async Task<Clienti> Update(Clienti request)
         {
 
-            var newClient = new Client
+            var newClient = new Clienti
             {
                 Id = request.Id,
-                LastName = request.LastName,
-                FirstName = request.FirstName,
-                City = request.City,
-                PhoneNumber = request.PhoneNumber,
-                Company = request.Company,
-                PostalCode = request.PostalCode,
-                Adress = request.Adress,
+                Nume = request.Nume,
+                Prenume = request.Prenume,
+                Oras = request.Oras,
+                Telefon = request.Telefon,
+                Companie = request.Companie,
+                Cod = request.Cod,
+                Adresa = request.Adresa,
             };
 
             var result = await repository.Update(newClient);

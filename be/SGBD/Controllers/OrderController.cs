@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SGBD.Application.Handlers;
 using SGBD.Domain.DTOs;
+using SGBD.Domain.Entities;
 using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
 
 namespace SGBD.Controllers
 {
@@ -18,7 +18,7 @@ namespace SGBD.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<Order>> GetAll()
+        public async Task<IEnumerable<Comenzi>> GetAll()
         {
             var result = await handler.GetAll();
             return result;
@@ -45,7 +45,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<Order> Create(OrderDto req)
+        public async Task<Comenzi> Create(OrderDto req)
         {
             var result = await handler.Create(req);
             return result;
@@ -58,7 +58,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<Order> Update(OrderDto req)
+        public async Task<Comenzi> Update(OrderDto req)
         {
             return await handler.Update(req);
         }

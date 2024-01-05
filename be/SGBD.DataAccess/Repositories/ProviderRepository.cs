@@ -1,11 +1,11 @@
-﻿using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
+﻿using SGBD.Domain.Entities;
+using SGBD.Domain.Interfaces;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class ProviderRepository : RepositoryBase<Provider>
+    public class ProviderRepository : RepositoryBase<Furnizori>
     {
-        public ProviderRepository(AppDbContext context)
+        public ProviderRepository(ApplicationDbContext context)
             : base(context)
         { }
     }

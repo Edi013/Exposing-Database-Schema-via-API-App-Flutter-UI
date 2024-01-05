@@ -2,8 +2,8 @@
 using SGBD.Application.Handlers;
 using SGBD.DataAccess;
 using SGBD.DataAccess.Repositories;
+using SGBD.Domain.Entities;
 using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
 
 namespace SGBD
 {
@@ -19,7 +19,7 @@ namespace SGBD
             builder.RegisterSwaggerSettings();
 
             var connectionString = builder.Configuration.GetConnectionString("SGBD");
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseOracle(connectionString, p => {
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(connectionString, p => {
                 p.UseOracleSQLCompatibility("11");
             }));
 
@@ -29,11 +29,11 @@ namespace SGBD
             builder.Services.AddScoped<StorageLocationHandler, StorageLocationHandler>();
             builder.Services.AddScoped<ProviderHandler, ProviderHandler>();
 
-            builder.Services.AddScoped<IRepository<Client>, ClientRepository>();
+            builder.Services.AddScoped<IRepository<Clienti>, ClientRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-            builder.Services.AddScoped<IRepository<Item>, ItemRepository>();
-            builder.Services.AddScoped<IRepository<StorageLocation>, StorageLocationRepository>();
-            builder.Services.AddScoped<IRepository<Provider>, ProviderRepository>();
+            builder.Services.AddScoped<IRepository<Articole>, ItemRepository>();
+            builder.Services.AddScoped<IRepository<Stoc>, StorageLocationRepository>();
+            builder.Services.AddScoped<IRepository<Furnizori>, ProviderRepository>();
 
             builder.RegisterAppSettings();
         }

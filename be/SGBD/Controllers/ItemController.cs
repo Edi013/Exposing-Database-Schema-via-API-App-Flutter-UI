@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SGBD.Application.Handlers;
 using SGBD.Domain.DTOs;
-using SGBD.Domain.Models;
+using SGBD.Domain.Entities;
 
 namespace SGBD.Controllers
 {
@@ -24,7 +24,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<Item> Create(ItemDto req)
+        public async Task<Articole> Create(ItemDto req)
         {
             return await handler.Create(req);
         }
@@ -36,7 +36,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<Item> Update(ItemDto req)
+        public async Task<Articole> Update(ItemDto req)
         {
             return await handler.Update(req);
         }

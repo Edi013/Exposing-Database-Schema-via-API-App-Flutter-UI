@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using SGBD.Domain.DTOs;
+using SGBD.Domain.Entities;
 using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
 using System.Runtime.Serialization;
 
 namespace SGBD.Application.Handlers
@@ -17,7 +17,7 @@ namespace SGBD.Application.Handlers
             this._configuration = _configuration;
         }
 
-        public async Task<Order> Create(OrderDto request)
+        public async Task<Comenzi> Create(OrderDto request)
         {
             string[] dateTimeFormats = { _configuration.GetSection("DateTimeFormats:1").Value, _configuration.GetSection("DateTimeFormats:2").Value,
                 _configuration.GetSection("DateTimeFormats:3").Value, _configuration.GetSection("DateTimeFormats:4").Value };
@@ -27,13 +27,13 @@ namespace SGBD.Application.Handlers
             tryParseStringToDateTime(request.OrderDate, out orderDate, dateTimeFormats);
             tryParseStringToDateTime(request.PayDate, out payDate, dateTimeFormats);
 
-            var newOrder = new Order
+            var newOrder = new Comenzi
             {
                 Id = 0,
-                ClientId = request.ClientId,
-                DeliveryDate = deliveryDate,
-                OrderDate = orderDate,
-                PayDate = payDate,
+                IdClienti = request.ClientId,
+                DataOnorare = deliveryDate,
+                DataPlasare = orderDate,
+                DataPlata = payDate,
             };
 
             var result = await repository.Add(newOrder);
@@ -46,13 +46,13 @@ namespace SGBD.Application.Handlers
             return result;
         }
 
-        public async Task<IEnumerable<Order>> GetAll()
+        public async Task<IEnumerable<Comenzi>> GetAll()
         {
             var result = await repository.GetAll();
             return result;
         }
 
-        public async Task<Order> Update(OrderDto request)
+        public async Task<Comenzi> Update(OrderDto request)
         {
             string[] dateTimeFormats = { _configuration.GetSection("DateTimeFormats:1").Value, _configuration.GetSection("DateTimeFormats:2").Value,
                 _configuration.GetSection("DateTimeFormats:3").Value, _configuration.GetSection("DateTimeFormats:4").Value };
@@ -62,13 +62,13 @@ namespace SGBD.Application.Handlers
             tryParseStringToDateTime(request.OrderDate, out orderDate, dateTimeFormats);
             tryParseStringToDateTime(request.PayDate, out payDate, dateTimeFormats);
 
-            var newOrder = new Order
+            var newOrder = new Comenzi
             {
                 Id = 0,
-                ClientId = request.ClientId,
-                DeliveryDate = deliveryDate,
-                OrderDate = orderDate,
-                PayDate = payDate,
+                IdClienti = request.ClientId,
+                DataOnorare = deliveryDate,
+                DataPlasare = orderDate,
+                DataPlata = payDate,
             };
 
             var result = await repository.Update(newOrder);

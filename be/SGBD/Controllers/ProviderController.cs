@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SGBD.Application.Handlers;
-using SGBD.Domain.Models;
+using SGBD.Domain.Entities;
 
 namespace SGBD.Controllers
 {
@@ -16,14 +16,14 @@ namespace SGBD.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<Provider>> GetAll()
+        public async Task<IEnumerable<Furnizori>> GetAll()
         {
             var result = await handler.GetAll();
             return result;
         }
 
         [HttpPost("Create")]
-        public async Task<Provider> Create(Provider req)
+        public async Task<Furnizori> Create(Furnizori req)
         {
             return await handler.Create(req);
         }
@@ -35,7 +35,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<Provider> Update(Provider req)
+        public async Task<Furnizori> Update(Furnizori req)
         {
             return await handler.Update(req);
         }

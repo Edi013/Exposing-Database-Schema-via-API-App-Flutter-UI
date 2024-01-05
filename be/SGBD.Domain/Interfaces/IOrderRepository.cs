@@ -1,9 +1,9 @@
 ﻿using SGBD.Domain.DTOs;
-using SGBD.Domain.Models;
+using SGBD.Domain.Entities;
 
 namespace SGBD.Domain.Interfaces
 {
-    public interface IOrderRepository : IRepository<Order>
+    public interface IOrderRepository : IRepository<Comenzi>
     {
         Task<IQueryable<EachOrderDto>> GetOrderStatiGetEachOrderStatistics();
         Task<OverallOrderStatisticsDto> GetOverallOrderStatistics();

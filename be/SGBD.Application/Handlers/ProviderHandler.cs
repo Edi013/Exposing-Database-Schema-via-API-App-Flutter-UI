@@ -1,24 +1,24 @@
-﻿using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
+﻿using SGBD.Domain.Entities;
+using SGBD.Domain.Interfaces;
 
 namespace SGBD.Application.Handlers
 {
     public class ProviderHandler
     {
-        IRepository<Provider> repository;
+        IRepository<Furnizori> repository;
 
-        public ProviderHandler(IRepository<Provider> repository)
+        public ProviderHandler(IRepository<Furnizori> repository)
         {
             this.repository = repository;
         }
 
-        public async Task<Provider> Create(Provider request)
+        public async Task<Furnizori> Create(Furnizori request)
         {
-            var newProvider = new Provider
+            var newProvider = new Furnizori
             {
                 Id = request.Id,
-                ExecutionDuration = request.ExecutionDuration,
-                ProviderName = request.ProviderName,
+                TimpExecutie = request.TimpExecutie,
+                NumeFurnizori = request.NumeFurnizori,
             };
 
             var result = await repository.Add(newProvider);
@@ -31,20 +31,20 @@ namespace SGBD.Application.Handlers
             return result;
         }
 
-        public async Task<IEnumerable<Provider>> GetAll()
+        public async Task<IEnumerable<Furnizori>> GetAll()
         {
             var result = await repository.GetAll();
             return result;
         }
 
-        public async Task<Provider> Update(Provider request)
+        public async Task<Furnizori> Update(Furnizori request)
         {
 
-            var newProvider = new Provider
+            var newProvider = new Furnizori
             {
                 Id = request.Id,
-                ExecutionDuration = request.ExecutionDuration,
-                ProviderName = request.ProviderName,
+                TimpExecutie = request.TimpExecutie,
+                NumeFurnizori = request.NumeFurnizori,
             };
 
             var result = await repository.Update(newProvider);

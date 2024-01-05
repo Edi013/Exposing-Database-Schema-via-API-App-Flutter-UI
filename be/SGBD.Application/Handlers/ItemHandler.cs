@@ -1,27 +1,27 @@
 ﻿using SGBD.Domain.DTOs;
+using SGBD.Domain.Entities;
 using SGBD.Domain.Interfaces;
-using SGBD.Domain.Models;
 
 namespace SGBD.Application.Handlers
 {
     public class ItemHandler
     {
-        IRepository<Item> repository;
+        IRepository<Articole> repository;
 
-        public ItemHandler(IRepository<Item> repository)
+        public ItemHandler(IRepository<Articole> repository)
         {
             this.repository = repository;
         }
 
-        public async Task<Item> Create(ItemDto request)
+        public async Task<Articole> Create(ItemDto request)
         {
-            var newItem = new Item
+            var newItem = new Articole
             {
                 Id = request.Id,
-                OrderId = request.OrderId,
-                StorageLocationId = request.StorageLocationId,
-                Quantity = request.Quantity,
-                TotalPrice = request.TotalPrice,
+                IdComenzi = request.OrderId,
+                IdStoc = request.StorageLocationId,
+                Cantitate = request.Quantity,
+                PretTotal = request.TotalPrice,
             };
 
             var result = await repository.Add(newItem);
@@ -44,25 +44,25 @@ namespace SGBD.Application.Handlers
                 result = result.Append(new ItemDto
                 {
                     Id = item.Id,
-                    OrderId = item.OrderId,
-                    StorageLocationId = item.StorageLocationId,
-                    Quantity = item.Quantity,
-                    TotalPrice = item.TotalPrice,
+                    OrderId = item.IdComenzi,
+                    StorageLocationId = item.IdStoc,
+                    Quantity = item.Cantitate,
+                    TotalPrice = item.PretTotal,
                 });
             }
             return result;
         }
 
-        public async Task<Item> Update(ItemDto request)
+        public async Task<Articole> Update(ItemDto request)
         {
 
-            var newItem = new Item
+            var newItem = new Articole
             {
                Id = request.Id,
-               OrderId = request.OrderId,
-               StorageLocationId = request.StorageLocationId,
-               Quantity = request.Quantity,
-               TotalPrice = request.TotalPrice,
+               IdComenzi = request.OrderId,
+               IdStoc = request.StorageLocationId,
+               Cantitate = request.Quantity,
+               PretTotal = request.TotalPrice,
             };
 
             var result = await repository.Update(newItem);

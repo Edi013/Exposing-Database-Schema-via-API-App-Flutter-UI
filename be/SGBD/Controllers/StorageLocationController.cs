@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SGBD.Application.Handlers;
 using SGBD.Domain.DTOs;
-using SGBD.Domain.Models;
+using SGBD.Domain.Entities;
 
 namespace SGBD.Controllers
 {
@@ -24,7 +24,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<StorageLocation> Create(StorageLocationDto req)
+        public async Task<Stoc> Create(StorageLocationDto req)
         {
             return await handler.Create(req);
         }
@@ -36,7 +36,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<StorageLocation> Update(StorageLocationDto req)
+        public async Task<Stoc> Update(StorageLocationDto req)
         {
             return await handler.Update(req);
         }
