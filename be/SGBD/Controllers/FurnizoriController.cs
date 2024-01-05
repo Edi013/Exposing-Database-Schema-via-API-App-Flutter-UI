@@ -6,24 +6,24 @@ namespace SGBD.Controllers
 {
     [ApiController]
     [Route("Api/[controller]")]
-    public class ClientController : ControllerBase
+    public class FurnizoriController : ControllerBase
     {
-        private readonly ClientiHandler handler;
+        private readonly FurnizoriHandler handler;
 
-        public ClientController(ClientiHandler handler)
+        public FurnizoriController(FurnizoriHandler handler)
         {
             this.handler = handler;
         }
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<Clienti>> GetAll()
+        public async Task<IEnumerable<Furnizori>> GetAll()
         {
             var result = await handler.GetAll();
             return result;
         }
 
         [HttpPost("Create")]
-        public async Task<Clienti> Create(Clienti req)
+        public async Task<Furnizori> Create(Furnizori req)
         {
             return await handler.Create(req);
         }
@@ -35,7 +35,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<Clienti> Update(Clienti req)
+        public async Task<Furnizori> Update(Furnizori req)
         {
             return await handler.Update(req);
         }

@@ -5,20 +5,20 @@ using SGBD.Domain.Interfaces;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class OrderRepository : RepositoryBase<Comenzi>, IOrderRepository
+    public class ComenziRepository : RepositoryBase<Comenzi>, IComenziRepository
     {
-        public OrderRepository(ApplicationDbContext context)
+        public ComenziRepository(ApplicationDbContext context)
             : base(context)
         { }
 
         // Cerinte suplimentare
         // 1
-        public async Task<IQueryable<ContextComandaDto>> GetOrderStatiGetEachOrderStatistics()
+        public async Task<IQueryable<ContextComandaDto>> GetContextComanda()
         {
-            var query = from comanda in context.TabelaComenzi
+            var result = from comanda in context.TabelaComenzi
                         join articol in context.TabelaArticole on comanda.Id equals articol.IdComenzi into articoleComandate
-                        from oi in articoleComandate.DefaultIfEmpty()
-                        group oi by new { comanda.Id } into grupare
+                        from articole in articoleComandate.DefaultIfEmpty()
+                        group articole by new { comanda.Id } into grupare
                         select new ContextComandaDto
                         {
                             OrderId = grupare.Key.Id,
@@ -26,11 +26,11 @@ namespace SGBD.DataAccess.Repositories
                             OrderValue = (decimal)grupare.Sum(articol => articol.PretTotal)
                         };
 
-            return await Task.FromResult(query.AsQueryable());
+            return await Task.FromResult(result.AsQueryable());
         }
 
         // 2
-        public async Task<ContextComenziDto> GetOverallOrderStatistics()
+        public async Task<ContextComenziDto> GetContextComenzi()
         {
 
             var result = await context.TabelaComenzi
@@ -51,9 +51,9 @@ namespace SGBD.DataAccess.Repositories
         }
 
         // 3
-        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> GetNeverOrderedItems()
+        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> GetArticoleComandateNiciodata()
         {
-            var neverOrderedItems = await context.TabelaStocuri
+            var resutl = await context.TabelaStocuri
                 .Where(sl => !context.TabelaArticole.Select(articol => articol.IdStoc).Contains(sl.Id))
               .Select(sl => new ArticoleComandateNiciodataDto
               {
@@ -64,7 +64,7 @@ namespace SGBD.DataAccess.Repositories
                   PretUnitar = (decimal)sl.PretUnitar,
               })
               .ToListAsync();
-            return neverOrderedItems;
+            return resutl;
         }
     }
 }

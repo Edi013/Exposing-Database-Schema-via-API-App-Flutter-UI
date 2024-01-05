@@ -8,10 +8,10 @@ namespace SGBD.Application.Handlers
 {
     public class ComenziHandler
     {
-        IOrderRepository repository;
+        IComenziRepository repository;
         private readonly IConfiguration _configuration;
 
-        public ComenziHandler(IOrderRepository repository, IConfiguration _configuration)
+        public ComenziHandler(IComenziRepository repository, IConfiguration _configuration)
         {
             this.repository = repository;
             this._configuration = _configuration;
@@ -75,21 +75,21 @@ namespace SGBD.Application.Handlers
             return result;
         }
    
-        public async Task<IQueryable<ContextComandaDto>> GetEachOrderStatistics()
+        public async Task<IQueryable<ContextComandaDto>> ContextComanda()
         {
-            var result = await repository.GetOrderStatiGetEachOrderStatistics();
+            var result = await repository.GetContextComanda();
             return result;
         }
 
-        public async Task<ContextComenziDto> GetOverallOrderStatistics()
+        public async Task<ContextComenziDto> ContextComanzi()
         {
-            var result = await repository.GetOverallOrderStatistics();
+            var result = await repository.GetContextComenzi();
             return result;
         }
 
-        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> GetNeverOrderedItems()
+        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> ArticoleComandateNiciodata()
         {
-            var result = await repository.GetNeverOrderedItems();
+            var result = await repository.GetArticoleComandateNiciodata();
             return result;
         }
 

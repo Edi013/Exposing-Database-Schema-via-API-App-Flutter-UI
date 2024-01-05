@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace SGBD.Domain.Entities
 {
     public partial class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext()
-        {
-        }
+        private IConfiguration _configuration;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration _configuration)
             : base(options)
         {
+            this._configuration = _configuration;
         }
+
         public virtual DbSet<Clienti> TabelaClienti { get; set; } = null!;
         public virtual DbSet<Comenzi> TabelaComenzi { get; set; } = null!;
         public virtual DbSet<Articole> TabelaArticole { get; set; } = null!;
@@ -22,7 +23,7 @@ namespace SGBD.Domain.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseOracle(Configuration.GetSection("SGBD"));
+                optionsBuilder.UseOracle(_configuration.GetConnectionString("SGBD"));
             }
         }
 
@@ -137,7 +138,7 @@ namespace SGBD.Domain.Entities
                 entity.Property(e => e.NumeFurnizori)
                     .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("NUME_FURNIZORI");
+                    .HasColumnName("NUME_FURNIZOR");
 
                 entity.Property(e => e.TimpExecutie)
                     .HasColumnType("NUMBER")
@@ -165,7 +166,7 @@ namespace SGBD.Domain.Entities
 
                 entity.Property(e => e.IdFurnizori)
                     .HasColumnType("NUMBER")
-                    .HasColumnName("ID_FURNIZORI");
+                    .HasColumnName("ID_FURNIZOR");
 
                 entity.Property(e => e.PretUnitar)
                     .HasColumnType("NUMBER")
@@ -186,10 +187,6 @@ namespace SGBD.Domain.Entities
             modelBuilder.HasSequence("SEQ_FURNIZORI");
 
             modelBuilder.HasSequence("SEQ_STOC");
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

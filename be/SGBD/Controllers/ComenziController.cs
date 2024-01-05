@@ -8,11 +8,11 @@ namespace SGBD.Controllers
 {
     [ApiController]
     [Route("Api/[controller]")]
-    public class OrderController : ControllerBase
+    public class ComenziController : ControllerBase
     {
         private readonly ComenziHandler handler;
 
-        public OrderController(ComenziHandler handler)
+        public ComenziController(ComenziHandler handler)
         {
             this.handler = handler;
         }
@@ -23,24 +23,24 @@ namespace SGBD.Controllers
             var result = await handler.GetAll();
             return result;
         }
-        [HttpGet("GetEachOrderStatistics")]
-        public async Task<IQueryable<ContextComandaDto>> GetEachOrderStatistics()
+        [HttpGet("ContextComanda")]
+        public async Task<IQueryable<ContextComandaDto>> ContextComanda()
         {
-            var result = await handler.GetEachOrderStatistics();
+            var result = await handler.ContextComanda();
             return result;
         }
 
-        [HttpGet("GetOverallOrderStatistics")]
-        public async Task<ContextComenziDto> GetOverallOrderStatistics()
+        [HttpGet("ContextComanzi")]
+        public async Task<ContextComenziDto> ContextComanzi()
         {
-            var result = await handler.GetOverallOrderStatistics();
+            var result = await handler.ContextComanzi();
             return result;
         }
 
-        [HttpGet("GetNeverOrderedItems")]
-        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> GetNeverOrderedItems()
+        [HttpGet("ArticoleComandateNiciodata")]
+        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> ArticoleComandateNiciodata()
         {
-            var result = await handler.GetNeverOrderedItems();
+            var result = await handler.ArticoleComandateNiciodata();
             return result;
         }
 

@@ -3,9 +3,9 @@ using SGBD.Domain.Interfaces;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class ProviderRepository : RepositoryBase<Furnizori>
+    public class StocRepository : RepositoryBase<Stoc>
     {
-        public ProviderRepository(ApplicationDbContext context)
+        public StocRepository(ApplicationDbContext context)
             : base(context)
         { }
     }

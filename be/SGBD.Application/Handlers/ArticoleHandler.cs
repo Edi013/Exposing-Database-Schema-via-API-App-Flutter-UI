@@ -36,18 +36,18 @@ namespace SGBD.Application.Handlers
 
         public async Task<IEnumerable<ArticoleDto>> GetAll()
         {
-            var items = await repository.GetAll();
+            var articole = await repository.GetAll();
             IEnumerable<ArticoleDto> result = new List<ArticoleDto>();
 
-            foreach (var item in items)
+            foreach (var articol in articole)
             {
                 result = result.Append(new ArticoleDto
                 {
-                    Id = item.Id,
-                    IdComenzi = item.IdComenzi,
-                    IdStoc = item.IdStoc,
-                    Cantitate = item.Cantitate,
-                    PretTotal = item.PretTotal,
+                    Id = articol.Id,
+                    IdComenzi = articol.IdComenzi,
+                    IdStoc = articol.IdStoc,
+                    Cantitate = articol.Cantitate,
+                    PretTotal = articol.PretTotal,
                 });
             }
             return result;

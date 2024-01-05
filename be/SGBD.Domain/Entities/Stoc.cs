@@ -12,6 +12,6 @@
         public string? Unitate { get; set; }
         public string? DescriereUnitate { get; set; }
 
-        public virtual Furnizori? Provider { get; set; }
+        public virtual Furnizori? Furnizori { get; set; }
     }
 }

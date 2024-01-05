@@ -29,11 +29,11 @@ namespace SGBD
             builder.Services.AddScoped<StocHandler, StocHandler>();
             builder.Services.AddScoped<FurnizoriHandler, FurnizoriHandler>();
 
-            builder.Services.AddScoped<IRepository<Clienti>, ClientRepository>();
-            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-            builder.Services.AddScoped<IRepository<Articole>, ItemRepository>();
-            builder.Services.AddScoped<IRepository<Stoc>, StorageLocationRepository>();
-            builder.Services.AddScoped<IRepository<Furnizori>, ProviderRepository>();
+            builder.Services.AddScoped<IRepository<Clienti>, ClientiRepository>();
+            builder.Services.AddScoped<IComenziRepository, ComenziRepository>();
+            builder.Services.AddScoped<IRepository<Articole>, ArticoleRepository>();
+            builder.Services.AddScoped<IRepository<Stoc>, StocRepository>();
+            builder.Services.AddScoped<IRepository<Furnizori>, FurnizoriRepository>();
 
             builder.RegisterAppSettings();
         }

@@ -22,7 +22,7 @@ namespace SGBD.Application.Handlers
                 Id = request.Id,
                 DescriereUnitate = request.DescriereLocatie,
                 Unitate = request.NumeLocatie,
-                IdFurnizori = request.FurnizoriId,
+                IdFurnizori = request.IdFurnizori,
                 PretUnitar = request.PretUnitar,
                 Descriere = request.Descriere
             };
@@ -41,17 +41,17 @@ namespace SGBD.Application.Handlers
         {
             IEnumerable<StocDto> results = new List<StocDto>();
 
-            var locations = await repository.GetAll();
+            var locatii = await repository.GetAll();
 
-            foreach(var storageLocation in locations) { 
+            foreach(var Stoc in locatii) { 
                 results = results.Append(new StocDto
                 {
-                    Id = storageLocation.Id,
-                    DescriereLocatie = storageLocation.DescriereUnitate,
-                    NumeLocatie = storageLocation.Unitate,
-                    FurnizoriId = storageLocation.IdFurnizori,
-                    PretUnitar = storageLocation.PretUnitar,
-                    Descriere = storageLocation.Descriere
+                    Id = Stoc.Id,
+                    DescriereLocatie = Stoc.DescriereUnitate,
+                    NumeLocatie = Stoc.Unitate,
+                    IdFurnizori = Stoc.IdFurnizori,
+                    PretUnitar = Stoc.PretUnitar,
+                    Descriere = Stoc.Descriere
                 }); 
             }
             return results;
@@ -65,7 +65,7 @@ namespace SGBD.Application.Handlers
                 Id = request.Id,
                 DescriereUnitate = request.DescriereLocatie,
                 Unitate = request.NumeLocatie,
-                IdFurnizori = request.FurnizoriId,
+                IdFurnizori = request.IdFurnizori,
                 PretUnitar = request.PretUnitar,
                 Descriere = request.Descriere
             };

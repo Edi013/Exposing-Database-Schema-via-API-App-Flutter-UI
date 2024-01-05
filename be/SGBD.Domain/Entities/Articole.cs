@@ -7,7 +7,7 @@
         public decimal? Cantitate { get; set; }
         public decimal? PretTotal { get; set; }
 
-        public virtual Comenzi? Order { get; set; }
-        public virtual Stoc? StorageLocation { get; set; }
+        public virtual Comenzi? Comenzi { get; set; }
+        public virtual Stoc? Stoc { get; set; }
     }
 }

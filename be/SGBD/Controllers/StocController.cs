@@ -7,11 +7,11 @@ namespace SGBD.Controllers
 {
     [ApiController]
     [Route("Api/[controller]")]
-    public class StorageLocationController : ControllerBase
+    public class StocController : ControllerBase
     {
         private readonly StocHandler handler;
 
-        public StorageLocationController(StocHandler handler)
+        public StocController(StocHandler handler)
         {
             this.handler = handler;
         }

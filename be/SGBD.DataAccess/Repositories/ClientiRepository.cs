@@ -3,9 +3,9 @@ using SGBD.Domain.Interfaces;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class StorageLocationRepository : RepositoryBase<Stoc>
+    public class ClientiRepository : RepositoryBase<Clienti>
     {
-        public StorageLocationRepository(ApplicationDbContext context)
+        public ClientiRepository(ApplicationDbContext context)
             : base(context)
         { }
     }

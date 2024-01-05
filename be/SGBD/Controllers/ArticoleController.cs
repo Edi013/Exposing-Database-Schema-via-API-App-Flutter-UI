@@ -7,11 +7,11 @@ namespace SGBD.Controllers
 {
     [ApiController]
     [Route("Api/[controller]")]
-    public class ItemController : ControllerBase
+    public class ArticoleController : ControllerBase
     {
         private readonly ArticoleHandler handler;
 
-        public ItemController(ArticoleHandler handler)
+        public ArticoleController(ArticoleHandler handler)
         {
             this.handler = handler;
         }

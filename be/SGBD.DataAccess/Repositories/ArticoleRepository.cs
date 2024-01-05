@@ -3,9 +3,9 @@ using SGBD.Domain.Interfaces;
 
 namespace SGBD.DataAccess.Repositories
 {
-    public class ClientRepository : RepositoryBase<Clienti>
+    public class ArticoleRepository : RepositoryBase<Articole>
     {
-        public ClientRepository(ApplicationDbContext context)
+        public ArticoleRepository(ApplicationDbContext context)
             : base(context)
         { }
     }
