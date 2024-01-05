@@ -3,11 +3,11 @@ using SGBD.Domain.Interfaces;
 
 namespace SGBD.Application.Handlers
 {
-    public class ClientHandler
+    public class ClientiHandler
     {
         IRepository<Clienti> repository;
 
-        public ClientHandler(IRepository<Clienti> repository)
+        public ClientiHandler(IRepository<Clienti> repository)
         {
             this.repository = repository;
         }

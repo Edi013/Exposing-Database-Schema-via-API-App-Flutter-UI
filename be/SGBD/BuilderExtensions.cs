@@ -23,11 +23,11 @@ namespace SGBD
                 p.UseOracleSQLCompatibility("11");
             }));
 
-            builder.Services.AddScoped<ClientHandler, ClientHandler>();
-            builder.Services.AddScoped<OrderHandler, OrderHandler>();
-            builder.Services.AddScoped<ItemHandler, ItemHandler>();
-            builder.Services.AddScoped<StorageLocationHandler, StorageLocationHandler>();
-            builder.Services.AddScoped<ProviderHandler, ProviderHandler>();
+            builder.Services.AddScoped<ClientiHandler, ClientiHandler>();
+            builder.Services.AddScoped<ComenziHandler, ComenziHandler>();
+            builder.Services.AddScoped<ArticoleHandler, ArticoleHandler>();
+            builder.Services.AddScoped<StocHandler, StocHandler>();
+            builder.Services.AddScoped<FurnizoriHandler, FurnizoriHandler>();
 
             builder.Services.AddScoped<IRepository<Clienti>, ClientRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();

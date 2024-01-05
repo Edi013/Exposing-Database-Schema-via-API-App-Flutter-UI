@@ -9,22 +9,22 @@ namespace SGBD.Controllers
     [Route("Api/[controller]")]
     public class StorageLocationController : ControllerBase
     {
-        private readonly StorageLocationHandler handler;
+        private readonly StocHandler handler;
 
-        public StorageLocationController(StorageLocationHandler handler)
+        public StorageLocationController(StocHandler handler)
         {
             this.handler = handler;
         }
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<StorageLocationDto>> GetAll()
+        public async Task<IEnumerable<StocDto>> GetAll()
         {
             var result = await handler.GetAll();
             return result;
         }
 
         [HttpPost("Create")]
-        public async Task<Stoc> Create(StorageLocationDto req)
+        public async Task<Stoc> Create(StocDto req)
         {
             return await handler.Create(req);
         }
@@ -36,7 +36,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<Stoc> Update(StorageLocationDto req)
+        public async Task<Stoc> Update(StocDto req)
         {
             return await handler.Update(req);
         }

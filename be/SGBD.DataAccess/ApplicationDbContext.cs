@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace SGBD.Domain.Entities
 {
@@ -15,17 +12,17 @@ namespace SGBD.Domain.Entities
             : base(options)
         {
         }
-        public virtual DbSet<Clienti> Clients { get; set; } = null!;
-        public virtual DbSet<Comenzi> Orders { get; set; } = null!;
-        public virtual DbSet<Articole> Items { get; set; } = null!;
-        public virtual DbSet<Stoc> StorageLocations { get; set; } = null!;
-        public virtual DbSet<Furnizori> Providers { get; set; } = null!;
+        public virtual DbSet<Clienti> TabelaClienti { get; set; } = null!;
+        public virtual DbSet<Comenzi> TabelaComenzi { get; set; } = null!;
+        public virtual DbSet<Articole> TabelaArticole { get; set; } = null!;
+        public virtual DbSet<Stoc> TabelaStocuri { get; set; } = null!;
+        public virtual DbSet<Furnizori> TabelaFurnizori { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseOracle("User Id=system;Password=231;Data Source=//localhost:1521/xe");
+                optionsBuilder.UseOracle(Configuration.GetSection("SGBD"));
             }
         }
 

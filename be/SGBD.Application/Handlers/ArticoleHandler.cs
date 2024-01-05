@@ -4,24 +4,24 @@ using SGBD.Domain.Interfaces;
 
 namespace SGBD.Application.Handlers
 {
-    public class ItemHandler
+    public class ArticoleHandler
     {
         IRepository<Articole> repository;
 
-        public ItemHandler(IRepository<Articole> repository)
+        public ArticoleHandler(IRepository<Articole> repository)
         {
             this.repository = repository;
         }
 
-        public async Task<Articole> Create(ItemDto request)
+        public async Task<Articole> Create(ArticoleDto request)
         {
             var newItem = new Articole
             {
                 Id = request.Id,
-                IdComenzi = request.OrderId,
-                IdStoc = request.StorageLocationId,
-                Cantitate = request.Quantity,
-                PretTotal = request.TotalPrice,
+                IdComenzi = request.IdComenzi,
+                IdStoc = request.IdStoc,
+                Cantitate = request.Cantitate,
+                PretTotal = request.PretTotal,
             };
 
             var result = await repository.Add(newItem);
@@ -34,35 +34,35 @@ namespace SGBD.Application.Handlers
             return result;
         }
 
-        public async Task<IEnumerable<ItemDto>> GetAll()
+        public async Task<IEnumerable<ArticoleDto>> GetAll()
         {
             var items = await repository.GetAll();
-            IEnumerable<ItemDto> result = new List<ItemDto>();
+            IEnumerable<ArticoleDto> result = new List<ArticoleDto>();
 
             foreach (var item in items)
             {
-                result = result.Append(new ItemDto
+                result = result.Append(new ArticoleDto
                 {
                     Id = item.Id,
-                    OrderId = item.IdComenzi,
-                    StorageLocationId = item.IdStoc,
-                    Quantity = item.Cantitate,
-                    TotalPrice = item.PretTotal,
+                    IdComenzi = item.IdComenzi,
+                    IdStoc = item.IdStoc,
+                    Cantitate = item.Cantitate,
+                    PretTotal = item.PretTotal,
                 });
             }
             return result;
         }
 
-        public async Task<Articole> Update(ItemDto request)
+        public async Task<Articole> Update(ArticoleDto request)
         {
 
             var newItem = new Articole
             {
                Id = request.Id,
-               IdComenzi = request.OrderId,
-               IdStoc = request.StorageLocationId,
-               Cantitate = request.Quantity,
-               PretTotal = request.TotalPrice,
+               IdComenzi = request.IdComenzi,
+               IdStoc = request.IdStoc,
+               Cantitate = request.Cantitate,
+               PretTotal = request.PretTotal,
             };
 
             var result = await repository.Update(newItem);

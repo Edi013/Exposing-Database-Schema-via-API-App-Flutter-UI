@@ -11,56 +11,57 @@ namespace SGBD.DataAccess.Repositories
             : base(context)
         { }
 
-        // 3.1 Number of orders, number of items, and total value of orders and items
-        public async Task<IQueryable<EachOrderDto>> GetOrderStatiGetEachOrderStatistics()
+        // Cerinte suplimentare
+        // 1
+        public async Task<IQueryable<ContextComandaDto>> GetOrderStatiGetEachOrderStatistics()
         {
-            var query = from order in context.Orders
-                        join item in context.Items on order.Id equals item.OrderId into orderItems
-                        from oi in orderItems.DefaultIfEmpty()
-                        group oi by new { order.Id } into grouped
-                        select new EachOrderDto
+            var query = from comanda in context.TabelaComenzi
+                        join articol in context.TabelaArticole on comanda.Id equals articol.IdComenzi into articoleComandate
+                        from oi in articoleComandate.DefaultIfEmpty()
+                        group oi by new { comanda.Id } into grupare
+                        select new ContextComandaDto
                         {
-                            OrderId = grouped.Key.Id,
-                            ItemsCount = grouped.Count(),
-                            OrderValue = (decimal)grouped.Sum(item => item.TotalPrice)
+                            OrderId = grupare.Key.Id,
+                            ItemsCount = grupare.Count(),
+                            OrderValue = (decimal)grupare.Sum(articol => articol.PretTotal)
                         };
 
             return await Task.FromResult(query.AsQueryable());
         }
 
-        // 3.2 Total number of orders, total number of items, and overall value of orders
-        public async Task<OverallOrderStatisticsDto> GetOverallOrderStatistics()
+        // 2
+        public async Task<ContextComenziDto> GetOverallOrderStatistics()
         {
 
-            var result = await context.Orders
-                .Select(order => new
+            var result = await context.TabelaComenzi
+                .Select(comanda => new
                 {
-                    OrdersCount = context.Orders.Count(),
-                    TotalItems = context.Items.Count(),
-                    OverallOrderValue = context.Items.Sum(item => item.TotalPrice) ?? 0
+                    OrdersCount = context.TabelaComenzi.Count(),
+                    TotalItems = context.TabelaArticole.Count(),
+                    OverallOrderValue = context.TabelaArticole.Sum(articol => articol.PretTotal) ?? 0
                 })
                 .FirstOrDefaultAsync();
 
-            return new OverallOrderStatisticsDto
+            return new ContextComenziDto
             {
-                TotalOrders = result.OrdersCount,
-                TotalItems = result?.TotalItems ?? 0,
-                OverallOrderValue = result?.OverallOrderValue ?? 0
+                NumarComenzi = result.OrdersCount,
+                NumarArticole = result?.TotalItems ?? 0,
+                ValoareTotala = result?.OverallOrderValue ?? 0
             };
         }
 
-        // 6 find and display products that have never been ordered (i.e., don't have entries in the Items table) but are present in stock (StorageLocations)
-        public async Task<IEnumerable<NeverOrderedItemDto>> GetNeverOrderedItems()
+        // 3
+        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> GetNeverOrderedItems()
         {
-            var neverOrderedItems = await context.StorageLocations
-                .Where(sl => !context.Items.Select(item => item.StorageLocationId).Contains(sl.Id))
-              .Select(sl => new NeverOrderedItemDto
+            var neverOrderedItems = await context.TabelaStocuri
+                .Where(sl => !context.TabelaArticole.Select(articol => articol.IdStoc).Contains(sl.Id))
+              .Select(sl => new ArticoleComandateNiciodataDto
               {
-                  StorageLocationId = sl.Id,
-                  LocationDescription = sl.LocationDescription,
-                  LocationName = sl.LocationName,
-                  ProviderId = (decimal)sl.ProviderId,
-                  UnitPrice = (decimal)sl.UnitPrice,
+                  IdStoc = sl.Id,
+                  DescriereUnitate = sl.DescriereUnitate,
+                  NumeUnitate = sl.Unitate,
+                  IdFurnizori = (decimal)sl.IdFurnizori,
+                  PretUnitar = (decimal)sl.PretUnitar,
               })
               .ToListAsync();
             return neverOrderedItems;

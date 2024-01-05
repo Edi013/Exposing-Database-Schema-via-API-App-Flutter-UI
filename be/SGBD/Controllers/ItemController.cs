@@ -9,22 +9,22 @@ namespace SGBD.Controllers
     [Route("Api/[controller]")]
     public class ItemController : ControllerBase
     {
-        private readonly ItemHandler handler;
+        private readonly ArticoleHandler handler;
 
-        public ItemController(ItemHandler handler)
+        public ItemController(ArticoleHandler handler)
         {
             this.handler = handler;
         }
 
         [HttpGet("GetAll")]
-        public async Task<IEnumerable<ItemDto>> GetAll()
+        public async Task<IEnumerable<ArticoleDto>> GetAll()
         {
             var result = await handler.GetAll();
             return result;
         }
 
         [HttpPost("Create")]
-        public async Task<Articole> Create(ItemDto req)
+        public async Task<Articole> Create(ArticoleDto req)
         {
             return await handler.Create(req);
         }
@@ -36,7 +36,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<Articole> Update(ItemDto req)
+        public async Task<Articole> Update(ArticoleDto req)
         {
             return await handler.Update(req);
         }

@@ -8,9 +8,9 @@ namespace SGBD.Controllers
     [Route("Api/[controller]")]
     public class ProviderController : ControllerBase
     {
-        private readonly ProviderHandler handler;
+        private readonly FurnizoriHandler handler;
 
-        public ProviderController(ProviderHandler handler)
+        public ProviderController(FurnizoriHandler handler)
         {
             this.handler = handler;
         }

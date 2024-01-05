@@ -3,11 +3,11 @@ using SGBD.Domain.Interfaces;
 
 namespace SGBD.Application.Handlers
 {
-    public class ProviderHandler
+    public class FurnizoriHandler
     {
         IRepository<Furnizori> repository;
 
-        public ProviderHandler(IRepository<Furnizori> repository)
+        public FurnizoriHandler(IRepository<Furnizori> repository)
         {
             this.repository = repository;
         }

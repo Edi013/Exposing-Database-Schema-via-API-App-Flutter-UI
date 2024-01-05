@@ -10,9 +10,9 @@ namespace SGBD.Controllers
     [Route("Api/[controller]")]
     public class OrderController : ControllerBase
     {
-        private readonly OrderHandler handler;
+        private readonly ComenziHandler handler;
 
-        public OrderController(OrderHandler handler)
+        public OrderController(ComenziHandler handler)
         {
             this.handler = handler;
         }
@@ -24,28 +24,28 @@ namespace SGBD.Controllers
             return result;
         }
         [HttpGet("GetEachOrderStatistics")]
-        public async Task<IQueryable<EachOrderDto>> GetEachOrderStatistics()
+        public async Task<IQueryable<ContextComandaDto>> GetEachOrderStatistics()
         {
             var result = await handler.GetEachOrderStatistics();
             return result;
         }
 
         [HttpGet("GetOverallOrderStatistics")]
-        public async Task<OverallOrderStatisticsDto> GetOverallOrderStatistics()
+        public async Task<ContextComenziDto> GetOverallOrderStatistics()
         {
             var result = await handler.GetOverallOrderStatistics();
             return result;
         }
 
         [HttpGet("GetNeverOrderedItems")]
-        public async Task<IEnumerable<NeverOrderedItemDto>> GetNeverOrderedItems()
+        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> GetNeverOrderedItems()
         {
             var result = await handler.GetNeverOrderedItems();
             return result;
         }
 
         [HttpPost("Create")]
-        public async Task<Comenzi> Create(OrderDto req)
+        public async Task<Comenzi> Create(ComenziDto req)
         {
             var result = await handler.Create(req);
             return result;
@@ -58,7 +58,7 @@ namespace SGBD.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<Comenzi> Update(OrderDto req)
+        public async Task<Comenzi> Update(ComenziDto req)
         {
             return await handler.Update(req);
         }

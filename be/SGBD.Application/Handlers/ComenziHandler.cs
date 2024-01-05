@@ -6,31 +6,31 @@ using System.Runtime.Serialization;
 
 namespace SGBD.Application.Handlers
 {
-    public class OrderHandler
+    public class ComenziHandler
     {
         IOrderRepository repository;
         private readonly IConfiguration _configuration;
 
-        public OrderHandler(IOrderRepository repository, IConfiguration _configuration)
+        public ComenziHandler(IOrderRepository repository, IConfiguration _configuration)
         {
             this.repository = repository;
             this._configuration = _configuration;
         }
 
-        public async Task<Comenzi> Create(OrderDto request)
+        public async Task<Comenzi> Create(ComenziDto request)
         {
             string[] dateTimeFormats = { _configuration.GetSection("DateTimeFormats:1").Value, _configuration.GetSection("DateTimeFormats:2").Value,
                 _configuration.GetSection("DateTimeFormats:3").Value, _configuration.GetSection("DateTimeFormats:4").Value };
 
             DateTime deliveryDate, orderDate, payDate;
-            tryParseStringToDateTime(request.DeliveryDate, out deliveryDate, dateTimeFormats);
-            tryParseStringToDateTime(request.OrderDate, out orderDate, dateTimeFormats);
-            tryParseStringToDateTime(request.PayDate, out payDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataOnorare, out deliveryDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataPlasare, out orderDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataPlata, out payDate, dateTimeFormats);
 
             var newOrder = new Comenzi
             {
                 Id = 0,
-                IdClienti = request.ClientId,
+                IdClienti = request.IdClienti,
                 DataOnorare = deliveryDate,
                 DataPlasare = orderDate,
                 DataPlata = payDate,
@@ -52,20 +52,20 @@ namespace SGBD.Application.Handlers
             return result;
         }
 
-        public async Task<Comenzi> Update(OrderDto request)
+        public async Task<Comenzi> Update(ComenziDto request)
         {
             string[] dateTimeFormats = { _configuration.GetSection("DateTimeFormats:1").Value, _configuration.GetSection("DateTimeFormats:2").Value,
                 _configuration.GetSection("DateTimeFormats:3").Value, _configuration.GetSection("DateTimeFormats:4").Value };
 
             DateTime deliveryDate, orderDate, payDate;
-            tryParseStringToDateTime(request.DeliveryDate, out deliveryDate, dateTimeFormats);
-            tryParseStringToDateTime(request.OrderDate, out orderDate, dateTimeFormats);
-            tryParseStringToDateTime(request.PayDate, out payDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataOnorare, out deliveryDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataPlasare, out orderDate, dateTimeFormats);
+            tryParseStringToDateTime(request.DataPlata, out payDate, dateTimeFormats);
 
             var newOrder = new Comenzi
             {
                 Id = 0,
-                IdClienti = request.ClientId,
+                IdClienti = request.IdClienti,
                 DataOnorare = deliveryDate,
                 DataPlasare = orderDate,
                 DataPlata = payDate,
@@ -75,19 +75,19 @@ namespace SGBD.Application.Handlers
             return result;
         }
    
-        public async Task<IQueryable<EachOrderDto>> GetEachOrderStatistics()
+        public async Task<IQueryable<ContextComandaDto>> GetEachOrderStatistics()
         {
             var result = await repository.GetOrderStatiGetEachOrderStatistics();
             return result;
         }
 
-        public async Task<OverallOrderStatisticsDto> GetOverallOrderStatistics()
+        public async Task<ContextComenziDto> GetOverallOrderStatistics()
         {
             var result = await repository.GetOverallOrderStatistics();
             return result;
         }
 
-        public async Task<IEnumerable<NeverOrderedItemDto>> GetNeverOrderedItems()
+        public async Task<IEnumerable<ArticoleComandateNiciodataDto>> GetNeverOrderedItems()
         {
             var result = await repository.GetNeverOrderedItems();
             return result;

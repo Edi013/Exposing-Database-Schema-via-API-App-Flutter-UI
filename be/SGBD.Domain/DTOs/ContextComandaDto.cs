@@ -1,6 +1,6 @@
 ﻿namespace SGBD.Domain.DTOs
 {
-    public class EachOrderDto
+    public class ContextComandaDto
     {
         public decimal OrderId { get; set; }
         public int ItemsCount { get; set; }

@@ -5,9 +5,9 @@ namespace SGBD.Domain.Interfaces
 {
     public interface IOrderRepository : IRepository<Comenzi>
     {
-        Task<IQueryable<EachOrderDto>> GetOrderStatiGetEachOrderStatistics();
-        Task<OverallOrderStatisticsDto> GetOverallOrderStatistics();
-        Task<IEnumerable<NeverOrderedItemDto>> GetNeverOrderedItems();
+        Task<IQueryable<ContextComandaDto>> GetOrderStatiGetEachOrderStatistics();
+        Task<ContextComenziDto> GetOverallOrderStatistics();
+        Task<IEnumerable<ArticoleComandateNiciodataDto>> GetNeverOrderedItems();
 
     }
 }

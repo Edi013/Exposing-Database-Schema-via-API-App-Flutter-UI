@@ -8,9 +8,9 @@ namespace SGBD.Controllers
     [Route("Api/[controller]")]
     public class ClientController : ControllerBase
     {
-        private readonly ClientHandler handler;
+        private readonly ClientiHandler handler;
 
-        public ClientController(ClientHandler handler)
+        public ClientController(ClientiHandler handler)
         {
             this.handler = handler;
         }
