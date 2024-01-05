@@ -10,7 +10,5 @@
         public DateTime? DataPlasare { get; set; }
         public DateTime? DataOnorare { get; set; }
         public DateTime? DataPlata { get; set; }
-
-        public virtual Clienti? Client { get; set; }
     }
 }

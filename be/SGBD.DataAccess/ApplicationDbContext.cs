@@ -15,7 +15,7 @@ namespace SGBD.Domain.Entities
 
         public virtual DbSet<Clienti> TabelaClienti { get; set; } = null!;
         public virtual DbSet<Comenzi> TabelaComenzi { get; set; } = null!;
-        public virtual DbSet<Articole> TabelaArticole { get; set; } = null!;
+        public virtual DbSet<Articole> TabelaArticole { get; set; } = null!; 
         public virtual DbSet<Stoc> TabelaStocuri { get; set; } = null!;
         public virtual DbSet<Furnizori> TabelaFurnizori { get; set; } = null!;
 
@@ -40,7 +40,7 @@ namespace SGBD.Domain.Entities
 
                 entity.Property(e => e.DataPlasare)
                     .HasColumnType("DATE")
-                    .HasColumnName("DATA_COMENZI");
+                    .HasColumnName("DATA_COMANDA");
 
                 entity.Property(e => e.DataOnorare)
                     .HasColumnType("DATE")
@@ -52,7 +52,7 @@ namespace SGBD.Domain.Entities
 
                 entity.Property(e => e.IdClienti)
                     .HasColumnType("NUMBER")
-                    .HasColumnName("ID_CLIENTI");
+                    .HasColumnName("ID_CLIENT");
             });
 
             modelBuilder.Entity<Articole>(entity =>
@@ -70,7 +70,7 @@ namespace SGBD.Domain.Entities
 
                 entity.Property(e => e.IdComenzi)
                     .HasColumnType("NUMBER")
-                    .HasColumnName("ID_COMENZI");
+                    .HasColumnName("ID_COMANDA");
 
                 entity.Property(e => e.IdStoc)
                     .HasColumnType("NUMBER")
