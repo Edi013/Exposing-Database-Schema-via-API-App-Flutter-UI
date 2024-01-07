@@ -69,7 +69,7 @@ namespace SGBD.Application.Handlers
 
             var newOrder = new Comenzi
             {
-                Id = 0,
+                Id = (decimal)request.Id ,
                 IdClienti = request.IdClienti,
                 DataOnorare = deliveryDate,
                 DataPlasare = orderDate,
@@ -105,8 +105,8 @@ namespace SGBD.Application.Handlers
                 return;
             }
 
-            if (!DateTime.TryParseExact(input, dateTimeFormats, null, System.Globalization.DateTimeStyles.None, out output))
-                //if (!DateTime.TryParse(input, out output))//dateTimeFormat) //, null, System.Globalization.DateTimeStyles.None, out output))
+            //if (!DateTime.TryParseExact(input, dateTimeFormats, null, System.Globalization.DateTimeStyles.None, out output))
+            if (!DateTime.TryParse(input, out output))
             {
                 throw new InvalidCastException();
             }
