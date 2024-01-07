@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:remind_me_fe/controller/comenzi/add_controller.dart';
 
 class AddComenziScreen extends StatelessWidget {
@@ -36,6 +37,8 @@ class AddComenziScreen extends StatelessWidget {
               TextFormField(
                 controller: addComenziController.dataPlasareController,
                 decoration: const InputDecoration(labelText: 'Data Plasare *'),
+                onTap: () => addComenziController.selectDate(
+                    context, addComenziController.dataPlasareController),
                 validator: (value) =>
                     addComenziController.validateFormField(value),
               ),
@@ -43,6 +46,8 @@ class AddComenziScreen extends StatelessWidget {
               TextFormField(
                 controller: addComenziController.dataOnorareController,
                 decoration: const InputDecoration(labelText: 'Data Onorare'),
+                onTap: () => addComenziController.selectDate(
+                    context, addComenziController.dataOnorareController),
                 validator: (value) =>
                     addComenziController.validateFormField(value),
               ),
@@ -50,6 +55,8 @@ class AddComenziScreen extends StatelessWidget {
               TextFormField(
                 controller: addComenziController.dataPlataController,
                 decoration: const InputDecoration(labelText: 'Data Plata'),
+                onTap: () => addComenziController.selectDate(
+                    context, addComenziController.dataPlataController),
                 validator: (value) =>
                     addComenziController.validateFormField(value),
               ),

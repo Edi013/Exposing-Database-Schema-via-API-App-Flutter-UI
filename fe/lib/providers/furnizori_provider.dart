@@ -6,9 +6,13 @@ class FurnizoriProvider extends ChangeNotifier {
   late FurnizoriRepository repository;
   late List<Furnizori> furnizoriList = [];
 
-  FurnizoriProvider() {
+  FurnizoriProvider._() {
     initialize();
   }
+
+  static final FurnizoriProvider _instance = FurnizoriProvider._();
+
+  factory FurnizoriProvider() => _instance;
 
   void initialize() async {
     repository = FurnizoriRepository();
@@ -17,28 +21,36 @@ class FurnizoriProvider extends ChangeNotifier {
   }
 
   Future<List<Furnizori>> getAll() async {
-    return await repository.getAll();
+    furnizoriList = await repository.getAll();
+    notifyListeners();
+    return furnizoriList;
   }
 
   Future<void> add(Furnizori object) async {
-    await repository.addFurnizori(object).then((value) {
-      furnizoriList.add(value);
-      notifyListeners();
-    });
+    await repository.addFurnizori(object).then(
+      (value) {
+        furnizoriList.add(value);
+        notifyListeners();
+      },
+    );
   }
 
   Future<void> update(int index, Furnizori updatedObject) async {
-    await repository.updateFurnizori(updatedObject).then((value) {
-      furnizoriList[index] = value;
-      notifyListeners();
-    });
+    await repository.updateFurnizori(updatedObject).then(
+      (value) {
+        furnizoriList[index] = value;
+        notifyListeners();
+      },
+    );
   }
 
   Future<void> delete(double id) async {
-    await repository.deleteFurnizori(id).then((value) {
-      furnizoriList
-          .remove(furnizoriList.firstWhere((element) => element.id == id));
-      notifyListeners();
-    });
+    await repository.deleteFurnizori(id).then(
+      (value) {
+        furnizoriList
+            .remove(furnizoriList.firstWhere((element) => element.id == id));
+        notifyListeners();
+      },
+    );
   }
 }

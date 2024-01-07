@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remind_me_fe/controller/comenzi/list_controller.dart';
-import 'package:remind_me_fe/models/comenzi.dart';
-import 'package:remind_me_fe/providers/comenzi_provider.dart';
+import 'package:remind_me_fe/controller/clienti/list_controller.dart';
+import 'package:remind_me_fe/models/clienti.dart';
+import 'package:remind_me_fe/providers/clienti_provider.dart';
 
-class ListComenziScreen extends StatelessWidget {
-  final ListComenziController listComenziController = ListComenziController();
+class ListClientiScreen extends StatelessWidget {
+  final ListClientiController listClientiController = ListClientiController();
 
-  ListComenziScreen({Key? key}) : super(key: key);
+  ListClientiScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ComenziProvider(),
+      create: (context) => ClientiProvider(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Comenzi List'),
+          title: const Text('Clienti List'),
         ),
         body: Container(
           padding: const EdgeInsets.all(16.0),
@@ -30,7 +30,7 @@ class ListComenziScreen extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
-                    'Comenzi',
+                    'Clienti',
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -38,24 +38,24 @@ class ListComenziScreen extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Consumer<ComenziProvider>(
-                    builder: (context, comenziProvider, child) {
+                  child: Consumer<ClientiProvider>(
+                    builder: (context, clientiProvider, child) {
                       return ListView.builder(
-                        itemCount: comenziProvider.comenziList.length,
+                        itemCount: clientiProvider.clientiList.length,
                         itemBuilder: (context, index) {
-                          Comenzi comenzi = comenziProvider.comenziList[index];
+                          Clienti clienti = clientiProvider.clientiList[index];
                           return ListTile(
-                            title: Text('ID: ${comenzi.id}'),
+                            title: Text('ID: ${clienti.id}'),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('ID Clienti: ${comenzi.idClienti}'),
-                                Text('Data Plasare: ${comenzi.dataPlasare}'),
-                                Text('Data Onorare: ${comenzi.dataOnorare}'),
-                                Text('Data Plata: ${comenzi.dataPlata}'),
+                                Text('Nume: ${clienti.nume}'),
+                                Text('Prenume: ${clienti.prenume}'),
+                                Text('Adresa: ${clienti.adresa}'),
+                                Text('Companie: ${clienti.companie}'),
                                 IconButton(
-                                  onPressed: () => listComenziController
-                                      .deleteById(context, comenzi.id!),
+                                  onPressed: () => listClientiController
+                                      .deleteById(context, clienti.id!),
                                   icon: const Icon(
                                     Icons.delete,
                                     color: Colors.red,
@@ -63,8 +63,8 @@ class ListComenziScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: () => listComenziController.updateItem(
-                                context, index, comenzi),
+                            onTap: () => listClientiController.updateItem(
+                                context, index, clienti),
                           );
                         },
                       );
@@ -74,8 +74,8 @@ class ListComenziScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
-                    onPressed: () => listComenziController.addItem(context),
-                    child: const Text('Add Comenzi'),
+                    onPressed: () => listClientiController.addItem(context),
+                    child: const Text('Add Clienti'),
                   ),
                 ),
               ],

@@ -58,7 +58,8 @@ class UpdateComenziScreen extends StatelessWidget {
               const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
-                  updateComenziController.saveChanges(
+                  updateComenziController.updateItem(
+                    comenziToUpdate.id!,
                     updateComenziController.idClientiController.text,
                     updateComenziController.dataPlasareController.text,
                     updateComenziController.dataOnorareController.text,
