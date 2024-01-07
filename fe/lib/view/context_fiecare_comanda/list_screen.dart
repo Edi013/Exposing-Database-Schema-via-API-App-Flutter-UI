@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remind_me_fe/controller/context_comanda/list_controller.dart';
 import 'package:remind_me_fe/models/statistici_comenzi/context_comanda_dto.dart';
 import 'package:remind_me_fe/providers/comenzi_provider.dart';
 
-class ListContextComandaDtoScreen extends StatelessWidget {
-  final ListContextComandaDtoController listContextComandaDtoController =
-      ListContextComandaDtoController();
-
-  ListContextComandaDtoScreen({Key? key}) : super(key: key);
+class ContextComandaScreen extends StatelessWidget {
+  const ContextComandaScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ComenziProvider>(context).getContextFiecareComanda();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Context Comanda Dto List'),

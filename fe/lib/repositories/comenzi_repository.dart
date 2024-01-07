@@ -43,7 +43,7 @@ class ComenziRepository {
     return result;
   }
 
-  Future<List<ContextComenziDto>> getContextComenzi() async {
+  Future<ContextComenziDto> getContextComenzi() async {
     final response = await http.get(
       Uri.parse('$apiUrl/ContextComanzi'),
       headers: {
@@ -53,9 +53,8 @@ class ComenziRepository {
       },
     );
 
-    final List<dynamic> data = json.decode(response.body);
-    List<ContextComenziDto> result =
-        data.map((json) => ContextComenziDto.fromJson(json)).toList();
+    final dynamic data = json.decode(response.body);
+    ContextComenziDto result = ContextComenziDto.fromJson(data);
     return result;
   }
 

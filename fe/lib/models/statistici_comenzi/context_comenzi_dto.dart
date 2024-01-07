@@ -1,12 +1,12 @@
 class ContextComenziDto {
-  late int numarComenzi;
-  late int numarArticole;
-  late double valoareTotala;
+  late int? numarComenzi;
+  late int? numarArticole;
+  late double? valoareTotala;
 
   ContextComenziDto({
-    required this.numarComenzi,
-    required this.numarArticole,
-    required this.valoareTotala,
+    this.numarComenzi,
+    this.numarArticole,
+    this.valoareTotala,
   });
 
   factory ContextComenziDto.fromJson(Map<String, dynamic> json) {

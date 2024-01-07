@@ -30,7 +30,7 @@ namespace SGBD.Controllers
             return result;
         }
 
-        [HttpGet("ContextComanzi")]
+        [HttpGet("ContextComenzi")]
         public async Task<ContextComenziDto> ContextComanzi()
         {
             var result = await handler.ContextComanzi();

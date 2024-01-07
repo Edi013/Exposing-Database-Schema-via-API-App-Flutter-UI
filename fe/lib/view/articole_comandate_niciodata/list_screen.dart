@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remind_me_fe/controller/articole_comandate_niciodata/list_controller.dart';
 import 'package:remind_me_fe/models/statistici_comenzi/articole_comandate_niciodata_dto.dart';
 import 'package:remind_me_fe/providers/comenzi_provider.dart';
 
-class ListArticoleComandateNiciodataDtoScreen extends StatelessWidget {
-  final ListArticoleComandateNiciodataDtoController listArticoleController =
-      ListArticoleComandateNiciodataDtoController();
-
-  ListArticoleComandateNiciodataDtoScreen({Key? key}) : super(key: key);
+class ArticoleComandateNiciodataScreen extends StatelessWidget {
+  const ArticoleComandateNiciodataScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ComenziProvider>(context).getArticoleComandateNiciodata();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Articole Comandate Niciodata Dto List'),
@@ -55,29 +53,12 @@ class ListArticoleComandateNiciodataDtoScreen extends StatelessWidget {
                               Text('Nume Unitate: ${articole.numeUnitate}'),
                               Text(
                                   'Descriere Unitate: ${articole.descriereUnitate}'),
-                              IconButton(
-                                onPressed: () => listArticoleController
-                                    .deleteById(context, articole.idStoc!),
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
-                              ),
                             ],
                           ),
-                          onTap: () => listArticoleController.updateItem(
-                              context, index, articole),
                         );
                       },
                     );
                   },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: () => listArticoleController.addItem(context),
-                  child: const Text('Add Articole Comandate Niciodata Dto'),
                 ),
               ),
             ],

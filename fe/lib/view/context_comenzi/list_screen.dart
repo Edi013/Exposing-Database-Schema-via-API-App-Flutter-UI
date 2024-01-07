@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remind_me_fe/controller/context_comenzi/list_controller.dart';
 import 'package:remind_me_fe/models/statistici_comenzi/context_comenzi_dto.dart';
 import 'package:remind_me_fe/providers/comenzi_provider.dart';
 
-class ListContextComenziDtoScreen extends StatelessWidget {
-  final ListContextComenziDtoController listContextComenziDtoController =
-      ListContextComenziDtoController();
-
-  ListContextComenziDtoScreen({Key? key}) : super(key: key);
+class ContextComenziScreen extends StatelessWidget {
+  const ContextComenziScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ComenziProvider>(context).getContextComenzi();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('ContextComenziDto List'),
@@ -40,11 +38,10 @@ class ListContextComenziDtoScreen extends StatelessWidget {
                 child: Consumer<ComenziProvider>(
                   builder: (context, contextComenziDtoProvider, child) {
                     return ListView.builder(
-                      itemCount:
-                          contextComenziDtoProvider.contextComenzi.length,
+                      itemCount: 1,
                       itemBuilder: (context, index) {
                         ContextComenziDto contextComenziDto =
-                            contextComenziDtoProvider.contextComenzi[index];
+                            contextComenziDtoProvider.contextComenzi;
                         return ListTile(
                           title: Text(
                               'Numar Comenzi: ${contextComenziDto.numarComenzi}'),

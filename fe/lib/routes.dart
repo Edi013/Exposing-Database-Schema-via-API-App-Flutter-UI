@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:remind_me_fe/view/articole/add_screen.dart';
 import 'package:remind_me_fe/view/articole/list_screen.dart';
 import 'package:remind_me_fe/view/articole/update_screen.dart';
+import 'package:remind_me_fe/view/articole_comandate_niciodata/list_screen.dart';
 import 'package:remind_me_fe/view/clienti/add_screen.dart';
 import 'package:remind_me_fe/view/clienti/list_screen.dart';
 import 'package:remind_me_fe/view/clienti/update_screen.dart';
 import 'package:remind_me_fe/view/comenzi/add_screen.dart';
 import 'package:remind_me_fe/view/comenzi/list_screen.dart';
 import 'package:remind_me_fe/view/comenzi/update_screen.dart';
+import 'package:remind_me_fe/view/context_comenzi/list_screen.dart';
+import 'package:remind_me_fe/view/context_fiecare_comanda/list_screen.dart';
 import 'package:remind_me_fe/view/furnizori/add_screen.dart';
 import 'package:remind_me_fe/view/furnizori/list_screen.dart';
 import 'package:remind_me_fe/view/furnizori/update_screen.dart';
 import 'package:remind_me_fe/view/home/home_screen.dart';
-import 'package:remind_me_fe/view/statistici_comenzi/list_context_fiecare_comanda_screen.dart';
 import 'package:remind_me_fe/view/stoc/add_screen.dart';
 import 'package:remind_me_fe/view/stoc/list_screen.dart';
 import 'package:remind_me_fe/view/stoc/update_screen.dart';
@@ -62,7 +64,7 @@ class Routes {
       listStoc: (context) => ListStocScreen(),
       updateStoc: (context) => UpdateStocScreen(),
       addStoc: (context) => AddStocScreen(),
-      contextComanda: (context) => ListContextComandaDtoScreen(),
+      contextComanda: (context) => ContextComandaScreen(),
       contextComenzi: (context) => ContextComenziScreen(),
       articoleComandateNiciodata: (context) =>
           ArticoleComandateNiciodataScreen(),

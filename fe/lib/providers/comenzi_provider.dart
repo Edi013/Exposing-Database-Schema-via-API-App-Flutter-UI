@@ -9,7 +9,7 @@ class ComenziProvider extends ChangeNotifier {
   late ComenziRepository repository;
   late List<Comenzi> comenziList = [];
   late List<ContextComandaDto> contextFiecareComanda = [];
-  late List<ContextComenziDto> contextComenzi = [];
+  late ContextComenziDto contextComenzi = new ContextComenziDto();
   late List<ArticoleComandateNiciodataDto> articoleComandateNiciodata = [];
 
   ComenziProvider._() {
@@ -22,7 +22,7 @@ class ComenziProvider extends ChangeNotifier {
 
   void initialize() async {
     repository = ComenziRepository();
-    comenziList = await getAll();
+    await getAll();
     notifyListeners();
   }
 
@@ -38,7 +38,7 @@ class ComenziProvider extends ChangeNotifier {
     return contextFiecareComanda;
   }
 
-  Future<List<ContextComenziDto>> getContextComenzi() async {
+  Future<ContextComenziDto> getContextComenzi() async {
     contextComenzi = await repository.getContextComenzi();
     notifyListeners();
     return contextComenzi;

@@ -15,8 +15,7 @@ class ArticoleProvider extends ChangeNotifier {
   factory ArticoleProvider() => _instance;
 
   void initialize() async {
-    repository =
-        ArticoleRepository(); // Make sure to initialize the correct repository
+    repository = ArticoleRepository();
     articoleList = await getAll();
     notifyListeners();
   }
