@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remind_me_fe/controller/context_comanda/list_controller.dart';
-import 'package:remind_me_fe/models/comenzi.dart';
-import 'package:remind_me_fe/models/context_comanda_dto.dart';
 import 'package:remind_me_fe/models/statistici_comenzi/context_comanda_dto.dart';
 import 'package:remind_me_fe/providers/comenzi_provider.dart';
-import 'package:remind_me_fe/providers/context_comanda_dto_provider.dart';
 
 class ListContextComandaDtoScreen extends StatelessWidget {
   final ListContextComandaDtoController listContextComandaDtoController =
@@ -56,30 +53,12 @@ class ListContextComandaDtoScreen extends StatelessWidget {
                                   'Items Count: ${contextComandaDto.itemsCount}'),
                               Text(
                                   'Order Value: ${contextComandaDto.orderValue}'),
-                              IconButton(
-                                onPressed: () =>
-                                    listContextComandaDtoController.deleteById(
-                                        context, contextComandaDto.orderId),
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
-                              ),
                             ],
                           ),
-                          // You can add onTap logic here if needed.
                         );
                       },
                     );
                   },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: () =>
-                      listContextComandaDtoController.addItem(context),
-                  child: const Text('Add Context Comanda Dto'),
                 ),
               ),
             ],

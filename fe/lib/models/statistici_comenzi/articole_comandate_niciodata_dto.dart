@@ -1,15 +1,35 @@
 class ArticoleComandateNiciodataDto {
-  late double idStoc;
-  late double idFurnizori;
-  late double pretUnitar;
-  late String numeUnitate;
-  late String descriereUnitate;
+  double? idStoc;
+  double? idFurnizori;
+  double? pretUnitar;
+  String? numeUnitate;
+  String? descriereUnitate;
 
   ArticoleComandateNiciodataDto({
-    required this.idStoc,
-    required this.idFurnizori,
-    required this.pretUnitar,
-    required this.numeUnitate,
-    required this.descriereUnitate,
+    this.idStoc,
+    this.idFurnizori,
+    this.pretUnitar,
+    this.numeUnitate,
+    this.descriereUnitate,
   });
+
+  factory ArticoleComandateNiciodataDto.fromJson(Map<String, dynamic> json) {
+    return ArticoleComandateNiciodataDto(
+      idStoc: json['idStoc']?.toDouble(),
+      idFurnizori: json['idFurnizori']?.toDouble(),
+      pretUnitar: json['pretUnitar']?.toDouble(),
+      numeUnitate: json['numeUnitate'],
+      descriereUnitate: json['descriereUnitate'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'idStoc': idStoc,
+      'idFurnizori': idFurnizori,
+      'pretUnitar': pretUnitar,
+      'numeUnitate': numeUnitate,
+      'descriereUnitate': descriereUnitate,
+    };
+  }
 }

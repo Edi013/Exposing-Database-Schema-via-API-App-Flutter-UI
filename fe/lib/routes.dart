@@ -12,6 +12,7 @@ import 'package:remind_me_fe/view/furnizori/add_screen.dart';
 import 'package:remind_me_fe/view/furnizori/list_screen.dart';
 import 'package:remind_me_fe/view/furnizori/update_screen.dart';
 import 'package:remind_me_fe/view/home/home_screen.dart';
+import 'package:remind_me_fe/view/statistici_comenzi/list_context_fiecare_comanda_screen.dart';
 import 'package:remind_me_fe/view/stoc/add_screen.dart';
 import 'package:remind_me_fe/view/stoc/list_screen.dart';
 import 'package:remind_me_fe/view/stoc/update_screen.dart';
@@ -61,7 +62,7 @@ class Routes {
       listStoc: (context) => ListStocScreen(),
       updateStoc: (context) => UpdateStocScreen(),
       addStoc: (context) => AddStocScreen(),
-      contextComanda: (context) => ContextComandaScreen(),
+      contextComanda: (context) => ListContextComandaDtoScreen(),
       contextComenzi: (context) => ContextComenziScreen(),
       articoleComandateNiciodata: (context) =>
           ArticoleComandateNiciodataScreen(),
