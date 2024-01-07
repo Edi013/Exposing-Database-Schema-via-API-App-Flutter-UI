@@ -34,7 +34,8 @@ class UpdateComenziController {
     return null;
   }
 
-  void saveChanges(
+  Future<void> updateItem(
+    double id,
     String idClienti,
     String dataPlasare,
     String dataOnorare,
@@ -42,12 +43,12 @@ class UpdateComenziController {
     int index,
     Comenzi comenziToUpdate,
     BuildContext context,
-  ) {
+  ) async {
     if (_formKey.currentState!.validate()) {
       Provider.of<ComenziProvider>(context, listen: false).update(
         index,
         Comenzi(
-          id: comenziToUpdate.id,
+          id: id,
           idClienti: double.parse(idClienti),
           dataPlasare: DateTime.parse(dataPlasare),
           dataOnorare:

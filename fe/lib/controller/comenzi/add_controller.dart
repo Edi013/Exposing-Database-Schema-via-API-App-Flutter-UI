@@ -23,15 +23,9 @@ class AddComenziController {
     if (_formKey.currentState!.validate()) {
       double id = double.parse(_idController.text);
       double idClienti = double.parse(_idClientiController.text);
-      DateTime? dataPlasare = _dataPlasareController.text.isNotEmpty
-          ? DateFormat("yyyy-MM-ddTHH:mm:ss").parse(_dataPlasareController.text)
-          : null;
-      DateTime? dataOnorare = _dataOnorareController.text.isNotEmpty
-          ? DateFormat("yyyy-MM-ddTHH:mm:ss").parse(_dataOnorareController.text)
-          : null;
-      DateTime? dataPlata = _dataPlataController.text.isNotEmpty
-          ? DateFormat("yyyy-MM-ddTHH:mm:ss").parse(_dataPlataController.text)
-          : null;
+      DateTime? dataPlasare = _parseDate(_dataPlasareController.text);
+      DateTime? dataOnorare = _parseDate(_dataOnorareController.text);
+      DateTime? dataPlata = _parseDate(_dataPlataController.text);
 
       Comenzi newComenzi = Comenzi(
         id: id,
@@ -52,5 +46,23 @@ class AddComenziController {
       return 'Field cannot be empty';
     }
     return null;
+  }
+
+  DateTime? _parseDate(String date) {
+    return date.isNotEmpty ? DateFormat("yyyy-MM-dd").parse(date) : null;
+  }
+
+  Future<void> selectDate(
+      BuildContext context, TextEditingController controller) async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null && pickedDate != controller.text) {
+      controller.text = DateFormat("yyyy-MM-dd").format(pickedDate);
+    }
   }
 }
