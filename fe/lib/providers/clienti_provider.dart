@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import '../models/clienti.dart'; // Import your Clienti model
-import '../repositories/clienti_repository.dart'; // Import your Clienti repository
+import '../models/clienti.dart';
+import '../repositories/clienti_repository.dart';
 
 class ClientiProvider extends ChangeNotifier {
   late ClientiRepository repository;
@@ -15,8 +15,7 @@ class ClientiProvider extends ChangeNotifier {
   factory ClientiProvider() => _instance;
 
   void initialize() async {
-    repository =
-        ClientiRepository(); // Make sure to replace with the correct repository
+    repository = ClientiRepository();
     clientiList = await getAll();
     notifyListeners();
   }

@@ -53,6 +53,9 @@ class ListClientiScreen extends StatelessWidget {
                                 Text('Prenume: ${clienti.prenume}'),
                                 Text('Adresa: ${clienti.adresa}'),
                                 Text('Companie: ${clienti.companie}'),
+                                Text('Oras: ${clienti.oras}'),
+                                Text('Cod postal: ${clienti.cod}'),
+                                Text('Telefon: ${clienti.telefon}'),
                                 IconButton(
                                   onPressed: () => listClientiController
                                       .deleteById(context, clienti.id!),

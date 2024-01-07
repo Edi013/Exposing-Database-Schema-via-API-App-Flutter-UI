@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remind_me_fe/color-scheme.dart';
+import 'package:remind_me_fe/providers/clienti_provider.dart';
 import 'package:remind_me_fe/providers/comenzi_provider.dart';
 import 'package:remind_me_fe/routes.dart';
 
@@ -11,7 +12,8 @@ void main() {
         providers: [
           ChangeNotifierProvider<ComenziProvider>(
               create: (_) => ComenziProvider()),
-          //ChangeNotifierProvider(create: (context) => FurnizoriProvider()),
+          ChangeNotifierProvider<ClientiProvider>(
+              create: (_) => ClientiProvider()),
         ],
         child: const MyApp(),
       ),
