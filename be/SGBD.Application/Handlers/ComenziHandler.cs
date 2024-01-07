@@ -8,7 +8,6 @@ namespace SGBD.Application.Handlers
 {
     public class ComenziHandler
     {
-        private string[] dateTimeFormats;
         IComenziRepository repository;
         private readonly IConfiguration configuration;
 
@@ -16,14 +15,6 @@ namespace SGBD.Application.Handlers
         {
             this.repository = repository;
             this.configuration = _configuration;
-
-            dateTimeFormats = new[] {
-                configuration.GetSection("DateTimeFormats:1").Value,
-                configuration.GetSection("DateTimeFormats:2").Value,
-                configuration.GetSection("DateTimeFormats:3").Value,
-                configuration.GetSection("DateTimeFormats:4").Value,
-                configuration.GetSection("DateTimeFormats:5").Value
-            };
         }
 
         public async Task<Comenzi> Create(ComenziDto request)
@@ -60,8 +51,6 @@ namespace SGBD.Application.Handlers
 
         public async Task<Comenzi> Update(ComenziDto request)
         {
-
-
             DateTime deliveryDate, orderDate, payDate;
             tryParseStringToDateTime(request.DataOnorare, out deliveryDate);
             tryParseStringToDateTime(request.DataPlasare, out orderDate);
@@ -105,7 +94,6 @@ namespace SGBD.Application.Handlers
                 return;
             }
 
-            //if (!DateTime.TryParseExact(input, dateTimeFormats, null, System.Globalization.DateTimeStyles.None, out output))
             if (!DateTime.TryParse(input, out output))
             {
                 throw new InvalidCastException();
