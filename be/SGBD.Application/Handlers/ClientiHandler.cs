@@ -16,7 +16,7 @@ namespace SGBD.Application.Handlers
         {
             var newClient = new Clienti
             {
-                Id = 0,
+                Id = 0,//request.Id
                 Nume = request.Nume,
                 Prenume = request.Prenume,
                 Oras = request.Oras,

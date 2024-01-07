@@ -9,12 +9,10 @@ namespace SGBD.Application.Handlers
     public class ComenziHandler
     {
         IComenziRepository repository;
-        private readonly IConfiguration configuration;
 
-        public ComenziHandler(IComenziRepository repository, IConfiguration _configuration)
+        public ComenziHandler(IComenziRepository repository)
         {
             this.repository = repository;
-            this.configuration = _configuration;
         }
 
         public async Task<Comenzi> Create(ComenziDto request)
