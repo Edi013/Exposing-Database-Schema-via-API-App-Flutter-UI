@@ -27,12 +27,9 @@ class FurnizoriProvider extends ChangeNotifier {
   }
 
   Future<void> add(Furnizori object) async {
-    await repository.addFurnizori(object).then(
-      (value) {
-        furnizoriList.add(value);
-        notifyListeners();
-      },
-    );
+    var result = await repository.addFurnizori(object);
+    furnizoriList.add(result);
+    notifyListeners();
   }
 
   Future<void> update(int index, Furnizori updatedObject) async {

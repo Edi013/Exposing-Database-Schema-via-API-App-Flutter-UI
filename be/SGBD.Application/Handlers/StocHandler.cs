@@ -19,7 +19,6 @@ namespace SGBD.Application.Handlers
         {
             var newStorageLocation = new Stoc
             {
-                Id = request.Id,
                 DescriereUnitate = request.DescriereLocatie,
                 Unitate = request.NumeLocatie,
                 IdFurnizori = request.IdFurnizori,

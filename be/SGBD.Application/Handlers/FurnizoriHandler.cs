@@ -16,7 +16,6 @@ namespace SGBD.Application.Handlers
         {
             var newProvider = new Furnizori
             {
-                Id = request.Id,
                 TimpExecutie = request.TimpExecutie,
                 NumeFurnizori = request.NumeFurnizori,
             };

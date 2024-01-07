@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:remind_me_fe/models/furnizori.dart';
 import 'package:remind_me_fe/providers/furnizori_provider.dart';
@@ -36,8 +37,6 @@ class AddFurnizoriController {
   String? validateFormField(value) {
     if (value == null || value.isEmpty) {
       return 'Field cannot be empty';
-    } else if (double.tryParse(value) == null) {
-      return 'Invalid number format';
     }
     return null;
   }

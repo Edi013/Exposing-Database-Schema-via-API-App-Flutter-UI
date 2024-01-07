@@ -1,10 +1,16 @@
 import 'package:flutter/foundation.dart';
+import 'package:remind_me_fe/models/statistici_comenzi/articole_comandate_niciodata_dto.dart';
+import 'package:remind_me_fe/models/statistici_comenzi/context_comanda_dto.dart';
+import 'package:remind_me_fe/models/statistici_comenzi/context_comenzi_dto.dart';
 import '../models/comenzi.dart';
 import '../repositories/comenzi_repository.dart';
 
 class ComenziProvider extends ChangeNotifier {
   late ComenziRepository repository;
   late List<Comenzi> comenziList = [];
+  late List<ContextComandaDto> contextFiecareComanda = [];
+  late List<ContextComenziDto> contextComenzi = [];
+  late List<ArticoleComandateNiciodataDto> articoleComandateNiciodata = [];
 
   ComenziProvider._() {
     initialize();
@@ -24,6 +30,26 @@ class ComenziProvider extends ChangeNotifier {
     comenziList = await repository.getAll();
     notifyListeners();
     return comenziList;
+  }
+
+  Future<List<ContextComandaDto>> getContextFiecareComanda() async {
+    contextFiecareComanda = await repository.getContextFiecareComanda();
+    notifyListeners();
+    return contextFiecareComanda;
+  }
+
+  Future<List<ContextComenziDto>> getContextComenzi() async {
+    contextComenzi = await repository.getContextComenzi();
+    notifyListeners();
+    return contextComenzi;
+  }
+
+  Future<List<ArticoleComandateNiciodataDto>>
+      getArticoleComandateNiciodata() async {
+    articoleComandateNiciodata =
+        await repository.getArticoleComandateNiciodata();
+    notifyListeners();
+    return articoleComandateNiciodata;
   }
 
   Future<void> add(Comenzi object) async {

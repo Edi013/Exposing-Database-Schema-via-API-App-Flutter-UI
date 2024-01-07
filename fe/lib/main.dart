@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remind_me_fe/color-scheme.dart';
+import 'package:remind_me_fe/providers/articole_provider.dart';
 import 'package:remind_me_fe/providers/clienti_provider.dart';
 import 'package:remind_me_fe/providers/comenzi_provider.dart';
+import 'package:remind_me_fe/providers/furnizori_provider.dart';
+import 'package:remind_me_fe/providers/stoc_provider.dart';
 import 'package:remind_me_fe/routes.dart';
 
 void main() {
@@ -14,6 +17,11 @@ void main() {
               create: (_) => ComenziProvider()),
           ChangeNotifierProvider<ClientiProvider>(
               create: (_) => ClientiProvider()),
+          ChangeNotifierProvider<ArticoleProvider>(
+              create: (_) => ArticoleProvider()),
+          ChangeNotifierProvider<StocProvider>(create: (_) => StocProvider()),
+          ChangeNotifierProvider<FurnizoriProvider>(
+              create: (_) => FurnizoriProvider()),
         ],
         child: const MyApp(),
       ),

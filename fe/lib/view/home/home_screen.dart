@@ -23,6 +23,25 @@ class HomeScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, Routes.contextComanda);
+                },
+                child: Text('Context pentru fiecare comanda'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.contextComenzi);
+                },
+                child: Text('Context pentru toate comenzile'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                      context, Routes.articoleComandateNiciodata);
+                },
+                child: Text('Articole niciodata comandate'),
+              ),
+              ElevatedButton(
+                onPressed: () {
                   Navigator.pushNamed(context, Routes.listFurnizori);
                 },
                 child: Text('List Furnizori'),

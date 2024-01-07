@@ -24,7 +24,6 @@ namespace SGBD.Application.Handlers
 
             var newOrder = new Comenzi
             {
-                Id = 0,
                 IdClienti = request.IdClienti,
                 DataOnorare = deliveryDate,
                 DataPlasare = orderDate,

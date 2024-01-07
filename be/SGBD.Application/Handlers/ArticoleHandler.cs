@@ -17,7 +17,6 @@ namespace SGBD.Application.Handlers
         {
             var newItem = new Articole
             {
-                Id = request.Id,
                 IdComenzi = request.IdComenzi,
                 IdStoc = request.IdStoc,
                 Cantitate = request.Cantitate,

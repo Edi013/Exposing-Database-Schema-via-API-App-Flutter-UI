@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:remind_me_fe/models/statistici_comenzi/articole_comandate_niciodata_dto.dart';
+import 'package:remind_me_fe/models/statistici_comenzi/context_comanda_dto.dart';
+import 'package:remind_me_fe/models/statistici_comenzi/context_comenzi_dto.dart';
 import '../models/comenzi.dart';
 import '../shared/enviroment.dart';
 
@@ -21,6 +24,56 @@ class ComenziRepository {
 
     final List<dynamic> data = json.decode(response.body);
     List<Comenzi> result = data.map((json) => Comenzi.fromJson(json)).toList();
+    return result;
+  }
+
+  Future<List<ContextComandaDto>> getContextFiecareComanda() async {
+    final response = await http.get(
+      Uri.parse('$apiUrl/ContextComanda'),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': '*/*'
+      },
+    );
+
+    final List<dynamic> data = json.decode(response.body);
+    List<ContextComandaDto> result =
+        data.map((json) => ContextComandaDto.fromJson(json)).toList();
+    return result;
+  }
+
+  Future<List<ContextComenziDto>> getContextComenzi() async {
+    final response = await http.get(
+      Uri.parse('$apiUrl/ContextComanzi'),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': '*/*'
+      },
+    );
+
+    final List<dynamic> data = json.decode(response.body);
+    List<ContextComenziDto> result =
+        data.map((json) => ContextComenziDto.fromJson(json)).toList();
+    return result;
+  }
+
+  Future<List<ArticoleComandateNiciodataDto>>
+      getArticoleComandateNiciodata() async {
+    final response = await http.get(
+      Uri.parse('$apiUrl/ArticoleComandateNiciodata'),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': '*/*'
+      },
+    );
+
+    final List<dynamic> data = json.decode(response.body);
+    List<ArticoleComandateNiciodataDto> result = data
+        .map((json) => ArticoleComandateNiciodataDto.fromJson(json))
+        .toList();
     return result;
   }
 

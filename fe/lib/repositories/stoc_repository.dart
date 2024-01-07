@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/furnizori.dart';
+import '../models/stoc.dart';
 import '../shared/enviroment.dart';
 
-class FurnizoriRepository {
-  final String apiExtension = '/Furnizori';
-  final String apiUrl = "${Environment.BASE_URL}/Furnizori";
+class StocRepository {
+  final String apiExtension = '/Stoc';
+  final String apiUrl = "${Environment.BASE_URL}/Stoc";
 
-  FurnizoriRepository() {}
+  StocRepository() {}
 
-  Future<List<Furnizori>> getAll() async {
+  Future<List<Stoc>> getAll() async {
     final response = await http.get(
       Uri.parse('$apiUrl/GetAll'),
       headers: {
@@ -20,38 +20,37 @@ class FurnizoriRepository {
     );
 
     final List<dynamic> data = json.decode(response.body);
-    List<Furnizori> result =
-        data.map((json) => Furnizori.fromJson(json)).toList();
+    List<Stoc> result = data.map((json) => Stoc.fromJson(json)).toList();
     return result;
   }
 
-  Future<Furnizori> addFurnizori(Furnizori furnizori) async {
+  Future<Stoc> addStoc(Stoc stoc) async {
     final response = await http.post(
       Uri.parse('$apiUrl/Create'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(furnizori.toJson()),
+      body: jsonEncode(stoc.toJson()),
     );
     try {
-      return Furnizori.fromJson(json.decode(response.body));
+      return Stoc.fromJson(json.decode(response.body));
     } catch (error) {
-      throw Exception('Failed to add Furnizori');
+      throw Exception('Failed to add Stoc');
     }
   }
 
-  Future<Furnizori> updateFurnizori(Furnizori furnizori) async {
+  Future<Stoc> updateStoc(Stoc stoc) async {
     final response = await http.put(
       Uri.parse('$apiUrl/Update'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(furnizori.toJson()),
+      body: jsonEncode(stoc.toJson()),
     );
     try {
-      return Furnizori.fromJson(json.decode(response.body));
+      return Stoc.fromJson(json.decode(response.body));
     } catch (error) {
-      throw Exception('Failed to update Furnizori + ${error}');
+      throw Exception('Failed to update Stoc + ${error}');
     }
   }
 
-  Future<void> deleteFurnizori(double id) async {
+  Future<void> deleteStoc(double id) async {
     await http.delete(
       Uri.parse('$apiUrl/Delete/$id'),
       headers: {'Content-Type': 'application/json'},
