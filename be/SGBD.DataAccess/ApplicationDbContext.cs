@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace SGBD.Domain.Entities
 {
-    public partial class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         private IConfiguration _configuration;
 
