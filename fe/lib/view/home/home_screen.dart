@@ -17,6 +17,12 @@ class HomeScreen extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, Routes.listClienti);
+                },
+                child: Text('List Clienti'),
+              ),
+              ElevatedButton(
+                onPressed: () {
                   Navigator.pushNamed(context, Routes.listComenzi);
                 },
                 child: Text('List Comenzi'),
@@ -42,18 +48,6 @@ class HomeScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, Routes.listFurnizori);
-                },
-                child: Text('List Furnizori'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.listClienti);
-                },
-                child: Text('List Clienti'),
-              ),
-              ElevatedButton(
-                onPressed: () {
                   Navigator.pushNamed(context, Routes.listArticole);
                 },
                 child: Text('List Articole'),
@@ -63,6 +57,12 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, Routes.listStoc);
                 },
                 child: Text('List Stoc'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.listFurnizori);
+                },
+                child: Text('List Furnizori'),
               ),
             ],
           ),

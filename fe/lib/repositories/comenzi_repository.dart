@@ -10,7 +10,7 @@ class ComenziRepository {
   final String apiExtension = '/Comenzi';
   final String apiUrl = "${Environment.BASE_URL}/Comenzi";
 
-  ComenziRepository() {}
+  ComenziRepository();
 
   Future<List<Comenzi>> getAll() async {
     final response = await http.get(
@@ -45,7 +45,7 @@ class ComenziRepository {
 
   Future<ContextComenziDto> getContextComenzi() async {
     final response = await http.get(
-      Uri.parse('$apiUrl/ContextComanzi'),
+      Uri.parse('$apiUrl/ContextComenzi'),
       headers: {
         "Access-Control-Allow-Origin": "*",
         'Content-Type': 'application/json; charset=UTF-8',

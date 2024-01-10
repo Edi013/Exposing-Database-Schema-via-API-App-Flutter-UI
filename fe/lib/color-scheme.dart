@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class AppColors {
   static ColorScheme getAppColorScheme() {
     int primaryColor = 0xFFB9A7C0;
-    int backgroundColor = 0xFFACABAC;
-    // Color(0xFFB9A7C0);
-    // Color(0xFFACABAC);
+    int backgroundColor = 0xFFAC8AAC;
+    Color(0xFFB9A7C0);
+    Color(0xFFAC8AAC);
 
     return ColorScheme.fromSwatch(
       primarySwatch: MaterialColor(
