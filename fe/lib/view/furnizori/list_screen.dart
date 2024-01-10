@@ -14,7 +14,7 @@ class ListFurnizoriScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Furnizori List'),
+        title: const Text('Furnizori Table'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),

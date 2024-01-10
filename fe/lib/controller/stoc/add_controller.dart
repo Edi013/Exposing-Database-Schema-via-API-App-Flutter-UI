@@ -37,8 +37,8 @@ class AddStocController {
         idFurnizori: idFurnizori,
         pretUnitar: pretUnitar,
         descriere: descriere,
-        unitate: unitate,
-        descriereUnitate: descriereUnitate,
+        numeLocatie: unitate,
+        descriereLocatie: descriereUnitate,
       );
 
       Provider.of<StocProvider>(context, listen: false).add(newStoc);

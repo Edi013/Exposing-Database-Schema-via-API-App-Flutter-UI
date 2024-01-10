@@ -13,7 +13,7 @@ class ListStocScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stoc List'),
+        title: const Text('Stoc Table'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -48,11 +48,11 @@ class ListStocScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('ID Furnizori: ${stoc.idFurnizori}'),
+                              Text('Nume Locatie: ${stoc.numeLocatie}'),
+                              Text(
+                                  'Descriere Locatie: ${stoc.descriereLocatie}'),
                               Text('Pret Unitar: ${stoc.pretUnitar}'),
                               Text('Descriere: ${stoc.descriere}'),
-                              Text('Unitate: ${stoc.unitate}'),
-                              Text(
-                                  'Descriere Unitate: ${stoc.descriereUnitate}'),
                               IconButton(
                                 onPressed: () => listStocController.deleteById(
                                     context, stoc.id!),

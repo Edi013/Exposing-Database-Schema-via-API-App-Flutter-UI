@@ -11,9 +11,7 @@ class ContextComenziScreen extends StatelessWidget {
     Provider.of<ComenziProvider>(context).getContextComenzi();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ContextComenziDto List'),
-      ),
+      appBar: AppBar(),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Card(
@@ -27,7 +25,7 @@ class ContextComenziScreen extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text(
-                  'ContextComenziDto',
+                  'Context Comenzi',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,

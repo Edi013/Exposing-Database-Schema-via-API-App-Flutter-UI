@@ -13,7 +13,7 @@ class ListClientiScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Clienti List'),
+        title: const Text('Clienti Table'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),

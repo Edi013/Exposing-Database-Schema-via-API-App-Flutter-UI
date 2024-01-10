@@ -14,7 +14,7 @@ class ListArticoleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Articole List'),
+        title: const Text(' Articole Table'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),

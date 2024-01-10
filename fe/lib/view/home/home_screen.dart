@@ -19,13 +19,13 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.listClienti);
                 },
-                child: Text('List Clienti'),
+                child: Text('Clienti Table'),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.listComenzi);
                 },
-                child: Text('List Comenzi'),
+                child: Text('Comenzi Table'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -50,19 +50,19 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.listArticole);
                 },
-                child: Text('List Articole'),
+                child: Text('Articole Table'),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.listStoc);
                 },
-                child: Text('List Stoc'),
+                child: Text('Stoc Table'),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.listFurnizori);
                 },
-                child: Text('List Furnizori'),
+                child: Text('Furnizori Table'),
               ),
             ],
           ),

@@ -13,7 +13,7 @@ class ListComenziScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Comenzi List'),
+        title: const Text('Comenzi Table'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),

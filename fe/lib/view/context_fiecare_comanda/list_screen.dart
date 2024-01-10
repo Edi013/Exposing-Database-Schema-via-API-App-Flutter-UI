@@ -11,9 +11,7 @@ class ContextComandaScreen extends StatelessWidget {
     Provider.of<ComenziProvider>(context).getContextFiecareComanda();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Context Comanda Dto List'),
-      ),
+      appBar: AppBar(),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Card(
@@ -27,7 +25,7 @@ class ContextComandaScreen extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text(
-                  'Context Comanda Dto',
+                  'Context Comanda ',
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,

@@ -27,9 +27,9 @@ class UpdateStocController {
     _descriereController =
         TextEditingController(text: stocToUpdate.descriere ?? '');
     _unitateController =
-        TextEditingController(text: stocToUpdate.unitate ?? '');
+        TextEditingController(text: stocToUpdate.numeLocatie ?? '');
     _descriereUnitateController =
-        TextEditingController(text: stocToUpdate.descriereUnitate ?? '');
+        TextEditingController(text: stocToUpdate.descriereLocatie ?? '');
   }
 
   String? validateFormField(String? value) {
@@ -58,8 +58,8 @@ class UpdateStocController {
           idFurnizori: double.parse(idFurnizori),
           pretUnitar: double.parse(pretUnitar),
           descriere: descriere,
-          unitate: unitate,
-          descriereUnitate: descriereUnitate,
+          numeLocatie: unitate,
+          descriereLocatie: descriereUnitate,
         ),
       );
 

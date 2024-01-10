@@ -1,28 +1,28 @@
 class Stoc {
   double? id;
   double? idFurnizori;
+  String? numeLocatie;
+  String? descriereLocatie;
   double? pretUnitar;
   String? descriere;
-  String? unitate;
-  String? descriereUnitate;
 
   Stoc({
     this.id,
     this.idFurnizori,
     this.pretUnitar,
     this.descriere,
-    this.unitate,
-    this.descriereUnitate,
+    this.numeLocatie,
+    this.descriereLocatie,
   });
 
   factory Stoc.fromJson(Map<String, dynamic> json) {
     return Stoc(
       id: json['id']?.toDouble(),
       idFurnizori: json['idFurnizori']?.toDouble(),
+      numeLocatie: json['numeLocatie'],
+      descriereLocatie: json['descriereLocatie'],
       pretUnitar: json['pretUnitar']?.toDouble(),
       descriere: json['descriere'],
-      unitate: json['unitate'],
-      descriereUnitate: json['descriereUnitate'],
     );
   }
 
@@ -30,10 +30,10 @@ class Stoc {
     return {
       'id': id,
       'idFurnizori': idFurnizori,
+      'numeLocatie': numeLocatie,
+      'descriereLocatie': descriereLocatie,
       'pretUnitar': pretUnitar,
       'descriere': descriere,
-      'unitate': unitate,
-      'descriereUnitate': descriereUnitate,
     };
   }
 }
